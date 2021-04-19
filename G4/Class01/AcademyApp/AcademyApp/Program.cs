@@ -47,33 +47,31 @@ namespace AcademyApp
                 {
 
                     #region Login
-                    Person user;
+                    Person user = null;
+
                     while (true)
                     {
                         Console.WriteLine("Enter username:");
                         string inputUserName = Console.ReadLine();
                         user = users
-                            .Where(x => x.UserName == inputUserName)
-                            .FirstOrDefault();
+                            .FirstOrDefault(x => x.UserName == inputUserName);
 
                         if (user == null)
                         {
                             Console.WriteLine("There isn't such username!");
                             continue;
                         }
+
                         Console.WriteLine("Enter password:");
                         string inputPassword = Console.ReadLine();
-                        if (user.ValidatePassword(inputPassword))
-                        {
-                            Console.WriteLine($"Successful login! Welcome {user.GetFullName()}!");
-                            break;
-                        }
-                        else
+                        if (!user.ValidatePassword(inputPassword))
                         {
                             Console.WriteLine("Wrong password, please try again!");
-                            continue;
+                            continue;                          
                         }
 
+                        Console.WriteLine($"Successful login! Welcome {user.GetFullName()}!");
+                        break;
                     }
                     #endregion
 
@@ -205,7 +203,7 @@ namespace AcademyApp
                         List<Person> listStudents = users
                                 .Where(x => x.PersonRole == Role.Student)
                                 .ToList();
-                        //cast class elements into Student!!!!!!!!!!!!!!!!
+                        //cast whole List of elements into class Student!!!!!!!!!!!!!!!!
                         List<Student> listOfStudents = listStudents.Cast<Student>().ToList();
 
                         if (inputChoice == 1)
@@ -289,7 +287,6 @@ namespace AcademyApp
                     }
                     #endregion
 
-
                     #region Student
                     if (user.PersonRole == Role.Student)
                     {
@@ -314,7 +311,7 @@ namespace AcademyApp
                             string chosenSubject = Console.ReadLine();
                             Console.WriteLine("---------------------------------------------------");
                             student.Enroll(subjects.FirstOrDefault(x => x.Name == chosenSubject));
-                            Console.WriteLine($"Your current subject is: {student.CurrentSubject.Name}");
+                            Console.WriteLine(student.CurrentSubject != null ? $"Your current subject is: {student.CurrentSubject.Name}" : "No current subejct");
                             Console.WriteLine("Log out user...");
                             Console.WriteLine("---------------------------------------------------");
                             continue;
@@ -335,7 +332,7 @@ namespace AcademyApp
             {
                 Console.WriteLine(ex.Message);
             }
-            
+            Console.ReadLine();
         }
     }
 }
