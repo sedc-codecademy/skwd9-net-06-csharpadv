@@ -27,6 +27,7 @@ namespace AtmExercise
                 Console.Clear();
             }
 
+            Console.WriteLine("Welcome to ATM");
             // contunie with the next part of the app
 
         }
@@ -119,7 +120,79 @@ namespace AtmExercise
 
         }
 
-        public static void Register() { Console.WriteLine("Register..."); }
+        public static void Register() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine("Register");
+            Console.WriteLine("===================");
+
+            Console.WriteLine("Enter card number:");
+            string cardNumber = Console.ReadLine();
+            long formatedCardNumber = FormatCardNumber(cardNumber);
+
+            if (formatedCardNumber == -1)
+            {
+                Console.WriteLine("Sorry, invalid card number, please try agian...");
+                Thread.Sleep(1500);
+                Console.Clear();
+                Register();
+                return;
+            }
+
+            Users.ForEach(user =>
+            {
+                if (formatedCardNumber == user.CardNumber) 
+                {
+                    Console.WriteLine("Sorry, the card number already exists, please try agian...");
+                    Thread.Sleep(1500);
+                    Console.Clear();
+                    Register();
+                    return;
+                }
+            });
+
+            Console.WriteLine("Enter Pin:");
+
+            short pinShort = 0;
+            string pinString = Console.ReadLine();
+            bool pin = short.TryParse(pinString, out pinShort);
+
+            if (!pin || pinString.Length != 4)
+            {
+                Console.WriteLine("Sorry, invalid pin, please try agian...");
+                Thread.Sleep(1500);
+                Console.Clear();
+                Register();
+                return;
+            }
+
+            Console.WriteLine("Enter your First Name: ");
+            string firstName = Console.ReadLine();
+
+            Console.WriteLine("Enter your Last Name: ");
+            string lastName = Console.ReadLine();
+
+            Console.WriteLine("Enter your Balance: ");
+            int balance = 0;
+            bool isBalanceNumber = int.TryParse(Console.ReadLine(), out balance);
+
+            if (!isBalanceNumber) 
+            {
+                Console.WriteLine("Sorry, invalid balance, please try agian...");
+                Thread.Sleep(1500);
+                Console.Clear();
+                Register();
+                return;
+            }
+
+            User newUser = new User(firstName, lastName, formatedCardNumber, pinShort, balance);
+            Users.Add(newUser);
+
+            Console.WriteLine($"{newUser.GetFullName()} has been succssfully registered!");
+            LoggedUser = newUser;
+        }
 
 
         public static List<User> GenerateUsers() 
