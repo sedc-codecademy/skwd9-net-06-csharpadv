@@ -1,6 +1,7 @@
 ﻿using AtmExercise.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace AtmExercise
@@ -9,6 +10,7 @@ namespace AtmExercise
     {
         // this will simulate our Database 
         public static List<User> Users { get; set; }
+        public static User LoggedUser { get; set; }
         static void Main(string[] args)
         {
             Users = GenerateUsers();
@@ -44,7 +46,7 @@ namespace AtmExercise
             if (!isLoginChoiceNumber) 
             {
                 Console.WriteLine("Sorry, wrong input, please try agian...");
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
                 return true;
             }
 
@@ -70,16 +72,50 @@ namespace AtmExercise
 
         public static void Login() 
         {
+            Console.Clear();
+
             Console.WriteLine("===================");
             Console.WriteLine("Login");
             Console.WriteLine("===================");
 
-            Console.WriteLine("Enter card number");
-
+            Console.WriteLine("Enter card number:");
             string cardNumber = Console.ReadLine();
             long formatedCardNumber = FormatCardNumber(cardNumber);
 
+            if (formatedCardNumber == -1) 
+            {
+                Console.WriteLine("Sorry, invalid card number, please try agian...");
+                Thread.Sleep(1500);
+                Console.Clear();
+                Login();
+                return;
+            }
 
+            Console.WriteLine("Enter Pin:");
+
+            short pinShort = 0;
+            string pinString = Console.ReadLine();
+            bool pin = short.TryParse(pinString, out pinShort);
+
+            if (!pin || pinString.Length != 4) 
+            {
+                Console.WriteLine("Sorry, invalid pin, please try agian...");
+                Thread.Sleep(1500);
+                Console.Clear();
+                Login();
+                return;
+            }
+
+            LoggedUser = Users.Where(user => user.CardNumber == formatedCardNumber && user.CheckPin(pinShort)).FirstOrDefault();
+
+            if (LoggedUser == null) 
+            {
+                Console.WriteLine("Sorry, user with this credentals does not exist, please try agian, or register new account.");
+                Thread.Sleep(1500);
+                Console.Clear();
+                StartApp();
+                return;
+            }
 
         }
 

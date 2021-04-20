@@ -25,5 +25,15 @@ namespace AtmExercise.Models
         {
             return $"{FirstName} {LastName}";
         }
+
+        public bool CheckPin(short pin) 
+        {
+            if (Pin == pin) 
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
