@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class01.Task
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class01.Task02.App", "SEDC.CSharpAdv.Class01.Task02.App\SEDC.CSharpAdv.Class01.Task02.App.csproj", "{FF48A570-5FE3-4DAB-B42B-B9D6FD1D2ACB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class01.Task03.Logic", "SEDC.CSharpAdv.Class01.Task03.Logic\SEDC.CSharpAdv.Class01.Task03.Logic.csproj", "{5E9A7673-4826-4B94-9ACC-C48993994295}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class01.Task03.App", "SEDC.CSharpAdv.Class01.Task03.App\SEDC.CSharpAdv.Class01.Task03.App.csproj", "{B3D3D7E3-1588-4E9E-8D7A-3605BCF1C5BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{FF48A570-5FE3-4DAB-B42B-B9D6FD1D2ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF48A570-5FE3-4DAB-B42B-B9D6FD1D2ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF48A570-5FE3-4DAB-B42B-B9D6FD1D2ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9A7673-4826-4B94-9ACC-C48993994295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9A7673-4826-4B94-9ACC-C48993994295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9A7673-4826-4B94-9ACC-C48993994295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9A7673-4826-4B94-9ACC-C48993994295}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D3D7E3-1588-4E9E-8D7A-3605BCF1C5BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D3D7E3-1588-4E9E-8D7A-3605BCF1C5BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D3D7E3-1588-4E9E-8D7A-3605BCF1C5BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D3D7E3-1588-4E9E-8D7A-3605BCF1C5BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
