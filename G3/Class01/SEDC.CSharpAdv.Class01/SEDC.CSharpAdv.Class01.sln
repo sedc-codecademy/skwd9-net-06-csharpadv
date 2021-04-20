@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class01.Task01.Logic", "SEDC.CSharpAdv.Class01.Task01.Logic\SEDC.CSharpAdv.Class01.Task01.Logic.csproj", "{4ED5790B-6E1A-4A05-9AFF-93408E3819D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class01.Task01.App", "SEDC.CSharpAdv.Class01.Task01.App\SEDC.CSharpAdv.Class01.Task01.App.csproj", "{658CF09F-307F-4B73-BA41-7A88BA489CB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ED5790B-6E1A-4A05-9AFF-93408E3819D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ED5790B-6E1A-4A05-9AFF-93408E3819D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ED5790B-6E1A-4A05-9AFF-93408E3819D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ED5790B-6E1A-4A05-9AFF-93408E3819D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{658CF09F-307F-4B73-BA41-7A88BA489CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658CF09F-307F-4B73-BA41-7A88BA489CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658CF09F-307F-4B73-BA41-7A88BA489CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658CF09F-307F-4B73-BA41-7A88BA489CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC54C8F2-C5D0-4771-9088-ABE73D089DDC}
+	EndGlobalSection
+EndGlobal
