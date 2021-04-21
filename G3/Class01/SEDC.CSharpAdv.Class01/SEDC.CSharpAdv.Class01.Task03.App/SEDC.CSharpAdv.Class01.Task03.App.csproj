@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SEDC.CSharpAdv.Class01.Task03.Logic\SEDC.CSharpAdv.Class01.Task03.Logic.csproj" />
+  </ItemGroup>
+
+</Project>

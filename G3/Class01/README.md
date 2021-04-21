@@ -1,9 +1,8 @@
 # Exercises ✍
 ## 1. Create a console application that detect provided names in a provided text 🔹
 * The application should ask for names to be entered until the user enteres x
-* After that the application should ask for a text (sentence)
-* Then the user provides a word from the entered text so the application can check how many times that word is consisted in the text
-* When that is done the application should show how many times that name was included in the text ignoring upper/lower case -->
+* After that the application should ask for a text
+* When that is done the application should show how many times that name was included in the text ignoring upper/lower case
 ## 2. Create a console application that checks if a day is a working day 🔹
 * The app should request for a user to enter a date as an input or multiple inputs
 * The app should then open and see if the day is a working day
@@ -21,7 +20,7 @@
     3. The user pick and the application pick are shown on the screen
     4. The application shows the winner
     5. The application saves 1 score to the user or the computer in the background
-    6. When the user hits enter it returns to the main menu
+    6. When the user hits enter it returns to the main menu 
   * Stats
     1. It shows how many wins the user and how many wins the computer has
     2. It shows percentage of the wins and loses of the user
