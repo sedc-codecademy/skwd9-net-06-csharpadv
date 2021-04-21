@@ -21,3 +21,8 @@
 * It should show the user a message whether the date they entered is working or not
   * Weekends are not working
   * 1 January, 7 January, 20 April, 1 May, 25 May, 3 August, 8 September, 12 October, 23 October and 8 December are not working days as well
+
+### Contact
+stojanovskatanja@hotmail.com
+manasiev.design@gmail.com
+
