@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SEDC.CSharpAdv.Class01.ConsoleApp3
 {
@@ -98,6 +99,16 @@ namespace SEDC.CSharpAdv.Class01.ConsoleApp3
             {
                 return "It's tie";
             }
+        }
+
+        static void DisplayStats(Player player, Player player2, int matchesPlayed)
+        {
+
+        }
+
+        static void LeadershipBoard(List<Player> players)
+        {
+            
         }
     }
 }
