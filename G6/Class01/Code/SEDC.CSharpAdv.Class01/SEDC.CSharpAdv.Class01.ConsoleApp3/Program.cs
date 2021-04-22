@@ -9,9 +9,7 @@ namespace SEDC.CSharpAdv.Class01.ConsoleApp3
         {
             Player damjan = new Player() { Name = "Damjan" };
             Player petre = new Player() { Name = "Petre" };
-            Console.WriteLine("Please enter 1 to play 2 for stats and 3 to exit");
-            string userInput = Console.ReadLine();
-            int menuChosen = ChooseMenuItem(userInput);
+            int matchesPlayed = 0;
             //if(menuChosen == 0)
             //{
             //    throw new Exception("The user input must be a number and not zero");
@@ -28,19 +26,29 @@ namespace SEDC.CSharpAdv.Class01.ConsoleApp3
             //{
             //    //Exit the applicaiton
             //}
-            switch (menuChosen)
+            while (true)
             {
-                case 0:
-                    throw new Exception("Wrong input");
-                    break;
-                case 1:
-                    Play(damjan, petre);
-                    break;
-                case 2:
-                    //Show stats
-                    break;
-                default:
-                    //Close the app
+                Console.WriteLine("Please enter 1 to play 2 for stats and 3 to exit");
+                string userInput = Console.ReadLine();
+                int menuChosen = ChooseMenuItem(userInput);
+                switch (menuChosen)
+                {
+                    case 0:
+                        throw new Exception("Wrong input");
+                        break;
+                    case 1:
+                        Play(damjan, petre);
+                        matchesPlayed++;
+                        continue;
+                    case 2:
+                        DisplayStats(damjan, petre, matchesPlayed);
+                        //Show stats
+                        break;
+                    default:
+                        //Close the app
+                        break;
+                }
+                if (menuChosen != 1)
                     break;
             }
             Console.ReadLine();
@@ -100,15 +108,14 @@ namespace SEDC.CSharpAdv.Class01.ConsoleApp3
                 return "It's tie";
             }
         }
-
         static void DisplayStats(Player player, Player player2, int matchesPlayed)
         {
-
-        }
-
-        static void LeadershipBoard(List<Player> players)
-        {
-            
+            Console.WriteLine($"The player {player.Name} has {player.Score} wins");
+            Console.WriteLine($"The player {player2.Name} has {player2.Score} wins");
+            double playerOneWins = (double)player.Score / (double)matchesPlayed;
+            double playerTwoWins = (double)player2.Score / (double)matchesPlayed;
+            Console.WriteLine(string.Format("The player {0} has {1:P} wins",player.Name,playerOneWins));
+            Console.WriteLine(string.Format("The player {0} has {1:P} wins",player2.Name,playerTwoWins));
         }
     }
 }
