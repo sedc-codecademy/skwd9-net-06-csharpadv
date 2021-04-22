@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AtmExercise.Entities\AtmExercise.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
