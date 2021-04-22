@@ -85,8 +85,52 @@ namespace AtmExercise
             }
         }
 
-        public static void CheckBalance() { Console.WriteLine("CheckBalance..."); }
-        public static void CashWithdrawal() { Console.WriteLine("CashWithdrawal"); }
+        public static void CheckBalance() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"{LoggedUser.GetFullName()}, your currnet blance is {LoggedUser.GetUserBalance()}");
+            Console.WriteLine("===================");
+        }
+
+        public static void CashWithdrawal() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"Cash Withdrawal");
+            Console.WriteLine("===================");
+
+            Console.WriteLine($"{LoggedUser.GetFullName()}, how much money do you want to withdraw?");
+
+            int ammount = 0;
+            bool isAmmountNumber = int.TryParse(Console.ReadLine(), out ammount);
+
+            if (!isAmmountNumber)
+            {
+                Console.WriteLine("Invalid ammount...");
+                Thread.Sleep(1500);
+                CashWithdrawal();
+            }
+
+            bool isTransactionSuccessfull = LoggedUser.WithdrawFromAccount(ammount);
+
+            if (isTransactionSuccessfull)
+            {
+                Console.WriteLine($"Please get your money...");
+                Thread.Sleep(1500);
+                CheckBalance();
+            }
+            else 
+            {
+                Console.WriteLine($"Sorry, you don't have enough money for the transaction.");
+                Thread.Sleep(1500);
+                CheckBalance();
+            }
+
+        }
+
         public static void CashDeposit() { Console.WriteLine("CashDeposit"); }
         public static void CashTransfer() { Console.WriteLine("CashTransfer"); }
         public static void Logout() 

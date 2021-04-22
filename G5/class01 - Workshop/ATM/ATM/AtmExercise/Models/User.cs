@@ -10,7 +10,7 @@ namespace AtmExercise.Models
         public string LastName { get; set; }
         public long CardNumber { get; set; }
         public short Pin { get; set; }
-        public int AccountBalance { get; set; }
+        private int AccountBalance { get; set; }
 
         public User(string firstName, string lastName, long cardNumber, short pin, int accountBalance)
         {
@@ -30,6 +30,22 @@ namespace AtmExercise.Models
         {
             if (Pin == pin) 
             {
+                return true;
+            }
+
+            return false;
+        }
+
+        public int GetUserBalance() 
+        {
+            return AccountBalance;
+        }
+
+        public bool WithdrawFromAccount(int ammount) 
+        {
+            if (ammount <= AccountBalance) 
+            {
+                AccountBalance -= ammount;
                 return true;
             }
 
