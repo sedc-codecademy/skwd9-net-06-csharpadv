@@ -6,6 +6,7 @@ namespace SEDC.CSharpAdv.Class02.AbstractClassesAndInterfaces.Entities.Interface
 {
     public interface IDeveloper
     {
+        int Id { get; set; }
         void Code();
     }
 }
