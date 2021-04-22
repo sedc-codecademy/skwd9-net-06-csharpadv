@@ -131,8 +131,52 @@ namespace AtmExercise
 
         }
 
-        public static void CashDeposit() { Console.WriteLine("CashDeposit"); }
-        public static void CashTransfer() { Console.WriteLine("CashTransfer"); }
+        public static void CashDeposit() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"Cash Deposit");
+            Console.WriteLine("===================");
+
+            Console.WriteLine($"{LoggedUser.GetFullName()}, how much money do you want to deposit?");
+
+            int ammount = 0;
+            bool isAmmountNumber = int.TryParse(Console.ReadLine(), out ammount);
+
+            if (!isAmmountNumber)
+            {
+                Console.WriteLine("Invalid ammount...");
+                Thread.Sleep(1500);
+                CashDeposit();
+            }
+
+            bool isTransactionSuccessfull = LoggedUser.DepositMoneyToAccount(ammount);
+
+            if (isTransactionSuccessfull)
+            {
+                Console.WriteLine($"Please deposit your money...");
+                Thread.Sleep(1500);
+                CheckBalance();
+            }
+            else
+            {
+                Console.WriteLine($"Sorry, invalid ammount...");
+                Thread.Sleep(1500);
+                CheckBalance();
+            }
+        }
+        public static void CashTransfer() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"Cash Transfer");
+            Console.WriteLine("===================");
+
+
+        }
+
         public static void Logout() 
         {
             LoggedUser = null;

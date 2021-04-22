@@ -51,5 +51,16 @@ namespace AtmExercise.Models
 
             return false;
         }
+
+        public bool DepositMoneyToAccount(int ammount) 
+        {
+            if (ammount < 1) 
+            {
+                return false;
+            }
+
+            AccountBalance += ammount;
+            return true;
+        }
     }
 }
