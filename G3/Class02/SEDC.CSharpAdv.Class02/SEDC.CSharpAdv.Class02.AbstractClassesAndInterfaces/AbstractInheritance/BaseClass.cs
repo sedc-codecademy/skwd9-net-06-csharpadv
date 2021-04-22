@@ -6,7 +6,7 @@ namespace SEDC.CSharpAdv.Class02.AbstractClassesAndInterfaces.AbstractInheritanc
 {
     public abstract class BaseClass
     {
-        public int Id { get; set; }
+        public abstract int Id { get; set; }
 
         public abstract void DoWork();
     }

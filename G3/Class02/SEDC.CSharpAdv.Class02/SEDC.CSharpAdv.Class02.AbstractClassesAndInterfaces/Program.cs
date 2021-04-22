@@ -7,8 +7,6 @@ namespace SEDC.CSharpAdv.Class02.AbstractClassesAndInterfaces
     {
         static void Main(string[] args)
         {
-            Human human = new Human();
-
             Console.ReadLine();
         }
     }

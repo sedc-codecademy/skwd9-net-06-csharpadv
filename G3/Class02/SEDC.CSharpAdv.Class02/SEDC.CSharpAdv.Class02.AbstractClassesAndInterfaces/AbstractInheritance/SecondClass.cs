@@ -6,6 +6,8 @@ namespace SEDC.CSharpAdv.Class02.AbstractClassesAndInterfaces.AbstractInheritanc
 {
     public class SecondClass : FirstClass
     {
+        public override int Id { get; set; }
+
         public override void DoSomeAdvancedWork()
         {
             throw new NotImplementedException();
