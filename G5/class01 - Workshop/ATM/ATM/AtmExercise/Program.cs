@@ -174,7 +174,63 @@ namespace AtmExercise
             Console.WriteLine($"Cash Transfer");
             Console.WriteLine("===================");
 
+            Console.WriteLine($"{LoggedUser.GetFullName()}, please enter the card number that you want to transfer money to?");
 
+            string cardNumber = Console.ReadLine();
+            long formatedCardNumber = FormatCardNumber(cardNumber);
+
+            if (formatedCardNumber == -1)
+            {
+                Console.WriteLine("Sorry, invalid card number, please try agian...");
+                Thread.Sleep(1500);
+                CashTransfer();
+                return;
+            }
+
+            User userForTransfer = Users.Where(user => user.CardNumber == formatedCardNumber).FirstOrDefault();
+
+            if (userForTransfer == null) 
+            {
+                Console.WriteLine("Sorry, this credit card number does not exist.");
+                Thread.Sleep(1500);
+                CashTransfer();
+                return;
+            }
+
+            Console.WriteLine($"{LoggedUser.GetFullName()}, how much money do you want to transfer to {userForTransfer.GetFullName()}?");
+
+            int amount = 0;
+            bool isAmmountNumber = int.TryParse(Console.ReadLine(), out amount);
+
+            if (!isAmmountNumber)
+            {
+                Console.WriteLine("Invalid ammount...");
+                Thread.Sleep(1500);
+                CashTransfer();
+            }
+
+            //if (amount > LoggedUser.GetUserBalance()) 
+            //{
+            //    Console.WriteLine("Sorry, you dont have enough money.");
+            //    Thread.Sleep(1500);
+            //    CashTransfer();
+            //}
+
+            bool isWithdrawSuccessfull = LoggedUser.WithdrawFromAccount(amount);
+            if (!isWithdrawSuccessfull)
+            {
+                Console.WriteLine("Sorry, you dont have enough money.");
+                Thread.Sleep(1500);
+                CashTransfer();
+            }
+
+            userForTransfer.DepositMoneyToAccount(amount);
+            Console.WriteLine("Transfering money...");
+            Thread.Sleep(2000);
+            Console.WriteLine($"{LoggedUser.GetFullName()}, you have succesfully transfered {amount}$ to {userForTransfer.GetFullName()}");
+            Thread.Sleep(2000);
+            CheckBalance();
+            
         }
 
         public static void Logout() 
