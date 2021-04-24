@@ -12,3 +12,7 @@
 * Create a list of Animal and add members that are of type Cat and Dog. 
 * Iterate the list, use GetType for each member to see the type of animal. If it is a dog call its bark method, if it is a cat call the Eat method.
 
+### Contact
+stojanovskatanja@hotmail.com
+manasiev.design@gmail.com
+

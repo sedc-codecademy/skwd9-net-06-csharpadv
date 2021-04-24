@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AtmExercise.Entities\AtmExercise.Entities.csproj" />
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\QuizApp.Services\QuizApp.Services.csproj" />
   </ItemGroup>
 
 </Project>

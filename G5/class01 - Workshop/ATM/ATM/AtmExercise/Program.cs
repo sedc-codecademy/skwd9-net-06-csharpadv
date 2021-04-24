@@ -1,22 +1,18 @@
-﻿using AtmExercise.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using AtmExercise.Entities.Models;
+using AtmExercise.InMemoryDatabase;
 
 namespace AtmExercise
 {
     class Program
     {
-        // this will simulate our Database 
-        public static List<User> Users { get; set; }
-        public static User LoggedUser { get; set; }
+        public static Customer LoggedCustomer { get; set; }
         static void Main(string[] args)
         {
-            Users = GenerateUsers();
-
             StartApp();
-
             Console.ReadLine();
         }
 
@@ -85,13 +81,156 @@ namespace AtmExercise
             }
         }
 
-        public static void CheckBalance() { Console.WriteLine("CheckBalance..."); }
-        public static void CashWithdrawal() { Console.WriteLine("CashWithdrawal"); }
-        public static void CashDeposit() { Console.WriteLine("CashDeposit"); }
-        public static void CashTransfer() { Console.WriteLine("CashTransfer"); }
+        public static void CheckBalance() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"{LoggedCustomer.GetFullName()}, your currnet blance is {LoggedCustomer.GetUserBalance()}");
+            Console.WriteLine("===================");
+        }
+
+        public static void CashWithdrawal() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"Cash Withdrawal");
+            Console.WriteLine("===================");
+
+            Console.WriteLine($"{LoggedCustomer.GetFullName()}, how much money do you want to withdraw?");
+
+            int ammount = 0;
+            bool isAmmountNumber = int.TryParse(Console.ReadLine(), out ammount);
+
+            if (!isAmmountNumber)
+            {
+                Console.WriteLine("Invalid ammount...");
+                Thread.Sleep(1500);
+                CashWithdrawal();
+            }
+
+            bool isTransactionSuccessfull = LoggedCustomer.WithdrawFromAccount(ammount);
+
+            if (isTransactionSuccessfull)
+            {
+                Console.WriteLine($"Please get your money...");
+                Thread.Sleep(1500);
+                CheckBalance();
+            }
+            else 
+            {
+                Console.WriteLine($"Sorry, you don't have enough money for the transaction.");
+                Thread.Sleep(1500);
+                CheckBalance();
+            }
+
+        }
+
+        public static void CashDeposit() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"Cash Deposit");
+            Console.WriteLine("===================");
+
+            Console.WriteLine($"{LoggedCustomer.GetFullName()}, how much money do you want to deposit?");
+
+            int ammount = 0;
+            bool isAmmountNumber = int.TryParse(Console.ReadLine(), out ammount);
+
+            if (!isAmmountNumber)
+            {
+                Console.WriteLine("Invalid ammount...");
+                Thread.Sleep(1500);
+                CashDeposit();
+            }
+
+            bool isTransactionSuccessfull = LoggedCustomer.DepositMoneyToAccount(ammount);
+
+            if (isTransactionSuccessfull)
+            {
+                Console.WriteLine($"Please deposit your money...");
+                Thread.Sleep(1500);
+                CheckBalance();
+            }
+            else
+            {
+                Console.WriteLine($"Sorry, invalid ammount...");
+                Thread.Sleep(1500);
+                CheckBalance();
+            }
+        }
+        public static void CashTransfer() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"Cash Transfer");
+            Console.WriteLine("===================");
+
+            Console.WriteLine($"{LoggedCustomer.GetFullName()}, please enter the card number that you want to transfer money to?");
+
+            string cardNumber = Console.ReadLine();
+            long formatedCardNumber = FormatCardNumber(cardNumber);
+
+            if (formatedCardNumber == -1)
+            {
+                Console.WriteLine("Sorry, invalid card number, please try agian...");
+                Thread.Sleep(1500);
+                CashTransfer();
+                return;
+            }
+
+            Customer customerForTransfer = ATM_DB.Users.Where(customer => customer.CardNumber == formatedCardNumber).FirstOrDefault();
+
+            if (customerForTransfer == null) 
+            {
+                Console.WriteLine("Sorry, this credit card number does not exist.");
+                Thread.Sleep(1500);
+                CashTransfer();
+                return;
+            }
+
+            Console.WriteLine($"{LoggedCustomer.GetFullName()}, how much money do you want to transfer to {customerForTransfer.GetFullName()}?");
+
+            int amount = 0;
+            bool isAmmountNumber = int.TryParse(Console.ReadLine(), out amount);
+
+            if (!isAmmountNumber)
+            {
+                Console.WriteLine("Invalid ammount...");
+                Thread.Sleep(1500);
+                CashTransfer();
+            }
+
+            //if (amount > LoggedUser.GetUserBalance()) 
+            //{
+            //    Console.WriteLine("Sorry, you dont have enough money.");
+            //    Thread.Sleep(1500);
+            //    CashTransfer();
+            //}
+
+            bool isWithdrawSuccessfull = LoggedCustomer.WithdrawFromAccount(amount);
+            if (!isWithdrawSuccessfull)
+            {
+                Console.WriteLine("Sorry, you dont have enough money.");
+                Thread.Sleep(1500);
+                CashTransfer();
+            }
+
+            customerForTransfer.DepositMoneyToAccount(amount);
+            Console.WriteLine("Transfering money...");
+            Thread.Sleep(2000);
+            Console.WriteLine($"{LoggedCustomer.GetFullName()}, you have succesfully transfered {amount}$ to {customerForTransfer.GetFullName()}");
+            Thread.Sleep(2000);
+            CheckBalance();
+        }
+
         public static void Logout() 
         {
-            LoggedUser = null;
+            LoggedCustomer = null;
             Console.WriteLine("Logging out...");
             Thread.Sleep(2000);
             Console.Clear();
@@ -104,7 +243,7 @@ namespace AtmExercise
             Console.Clear();
 
             Console.WriteLine("===================");
-            Console.WriteLine($"Welcome {LoggedUser.GetFullName()}");
+            Console.WriteLine($"Welcome {LoggedCustomer.GetFullName()}");
             Console.WriteLine("===================");
             Console.WriteLine("1) Check Balance");
             Console.WriteLine("2) Cash Withdrawal");
@@ -208,9 +347,9 @@ namespace AtmExercise
                 return;
             }
 
-            LoggedUser = Users.Where(user => user.CardNumber == formatedCardNumber && user.CheckPin(pinShort)).FirstOrDefault();
+            LoggedCustomer = ATM_DB.Users.Where(user => user.CardNumber == formatedCardNumber && user.CheckPin(pinShort)).FirstOrDefault();
 
-            if (LoggedUser == null) 
+            if (LoggedCustomer == null) 
             {
                 Console.WriteLine("Sorry, user with this credentals does not exist, please try agian, or register new account.");
                 Thread.Sleep(1500);
@@ -242,7 +381,7 @@ namespace AtmExercise
                 return;
             }
 
-            Users.ForEach(user =>
+            ATM_DB.Users.ForEach(user =>
             {
                 if (formatedCardNumber == user.CardNumber) 
                 {
@@ -288,24 +427,15 @@ namespace AtmExercise
                 return;
             }
 
-            User newUser = new User(firstName, lastName, formatedCardNumber, pinShort, balance);
-            Users.Add(newUser);
+            Customer newUser = new Customer(firstName, lastName, formatedCardNumber, pinShort, balance);
+            ATM_DB.Users.Add(newUser);
 
             Console.WriteLine($"{newUser.GetFullName()} has been succssfully registered!");
-            LoggedUser = newUser;
+            LoggedCustomer = newUser;
         }
 
 
-        public static List<User> GenerateUsers() 
-        {
-            return new List<User>()
-            {
-                new User("Bob", "Bobsky", 1234123412341234, 1234, 750),
-                new User("Jill","Wayne", 8235823582358235, 9000, 1200),
-                new User("Rayan","Dawn", 0090119122923393, 2500, 500),
-                new User("Anne","May", 0000220311012203, 0000, 400)
-            };
-        }
+        
 
         public static long FormatCardNumber(string cardNumberString) //1234123412341234 //1234-1234-1234-1234
         {
