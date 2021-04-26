@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticClasses", "StaticClasses\StaticClasses.csproj", "{78626C06-B8AA-4662-804F-8AADAB76D1E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolymorphismMain", "PolymorphismMain\PolymorphismMain.csproj", "{E659B7D2-27BF-4552-9AE1-18E9387A5349}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polymorhism-Static", "Polymorhism-Static\Polymorhism-Static.csproj", "{B6177060-C487-4E66-8928-69F8124B774F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polymorphism-Dynamic", "Polymorphism-Dynamic\Polymorphism-Dynamic.csproj", "{F163C10B-80E4-4969-966B-DC4BB90F0F22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polymorphism-Virtual", "Polymorphism-Virtual\Polymorphism-Virtual.csproj", "{A25DC7A3-39A3-44B6-BEEC-936CD2C0C70B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polymorphism-Abstract", "Polymorphism-Abstract\Polymorphism-Abstract.csproj", "{26B3D783-14F7-4C72-A5BE-F6174D1DC527}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78626C06-B8AA-4662-804F-8AADAB76D1E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78626C06-B8AA-4662-804F-8AADAB76D1E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78626C06-B8AA-4662-804F-8AADAB76D1E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78626C06-B8AA-4662-804F-8AADAB76D1E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E659B7D2-27BF-4552-9AE1-18E9387A5349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E659B7D2-27BF-4552-9AE1-18E9387A5349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E659B7D2-27BF-4552-9AE1-18E9387A5349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E659B7D2-27BF-4552-9AE1-18E9387A5349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6177060-C487-4E66-8928-69F8124B774F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6177060-C487-4E66-8928-69F8124B774F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6177060-C487-4E66-8928-69F8124B774F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6177060-C487-4E66-8928-69F8124B774F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F163C10B-80E4-4969-966B-DC4BB90F0F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F163C10B-80E4-4969-966B-DC4BB90F0F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F163C10B-80E4-4969-966B-DC4BB90F0F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F163C10B-80E4-4969-966B-DC4BB90F0F22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A25DC7A3-39A3-44B6-BEEC-936CD2C0C70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A25DC7A3-39A3-44B6-BEEC-936CD2C0C70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A25DC7A3-39A3-44B6-BEEC-936CD2C0C70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A25DC7A3-39A3-44B6-BEEC-936CD2C0C70B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26B3D783-14F7-4C72-A5BE-F6174D1DC527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26B3D783-14F7-4C72-A5BE-F6174D1DC527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26B3D783-14F7-4C72-A5BE-F6174D1DC527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26B3D783-14F7-4C72-A5BE-F6174D1DC527}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22568827-DF42-4024-B30E-E02E937D38AB}
+	EndGlobalSection
+EndGlobal
