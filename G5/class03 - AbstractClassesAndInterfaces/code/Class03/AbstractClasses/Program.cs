@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AbstractClasses.Entities;
+using System;
 
 namespace AbstractClasses
 {
@@ -6,6 +7,17 @@ namespace AbstractClasses
     {
         static void Main(string[] args)
         {
+            // Abstract classes and not be instantiated
+            //User user = new User();
+
+            Admin admin = new Admin();
+            admin.SayHello("Viktor");
+            admin.SayGoodbye("Viktor");
+
+
+            Console.ReadLine();
         }
+
     }
+
 }
