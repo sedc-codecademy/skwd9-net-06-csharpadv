@@ -15,7 +15,12 @@ namespace AtmExercise.Entities.Models
         {
             Username = username;
             Password = password;
+            LoginSessions = new List<DateTime>();
         }
 
+        public void LogLoginSession() 
+        {
+            LoginSessions.Add(DateTime.Now);
+        }
     }
 }

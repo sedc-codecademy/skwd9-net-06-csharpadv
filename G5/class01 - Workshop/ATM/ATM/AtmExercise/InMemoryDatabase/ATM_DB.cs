@@ -7,7 +7,7 @@ namespace AtmExercise.InMemoryDatabase
 {
     public static class ATM_DB
     {
-        public static List<Customer> Users { get; set; } = GenerateCustomers();
+        public static List<Customer> Customers { get; set; } = GenerateCustomers();
         public static List<Admin> Admins { get; set; } = GenerateAdmins();
 
         public static List<Customer> GenerateCustomers()

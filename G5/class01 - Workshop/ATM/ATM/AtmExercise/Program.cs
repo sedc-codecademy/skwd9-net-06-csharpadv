@@ -10,6 +10,8 @@ namespace AtmExercise
     class Program
     {
         public static Customer LoggedCustomer { get; set; }
+        public static Admin LoggedAdmin { get; set; }
+
         static void Main(string[] args)
         {
             StartApp();
@@ -28,8 +30,147 @@ namespace AtmExercise
 
         public static void StartAtm() 
         {
-            int operation = InitiateAtmUi();
-            StartAtmServices(operation);
+            int choice = InitiateAtmUi();
+
+            if (LoggedCustomer != null) 
+            {
+                StartAtmServices(choice);
+            }
+
+            if (LoggedAdmin != null)
+            {
+                StartAdminPanel(choice);
+            }
+        }
+
+        public static void StartAdminPanel(int choice) 
+        {
+            switch (choice)
+            {
+                case 1:
+                    AddMoneyToCustomer();
+                    break;
+                case 2:
+                    CheckLoginSessions();
+                    break;
+                case 3:
+                    Logout();
+                    break;
+                default:
+                    break;
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Do you want another service?");
+                Console.WriteLine("Type YES of you want to continue");
+                Console.WriteLine("Type NO of you want to Logout");
+                Console.WriteLine("YES/NO");
+
+                string endChoice = Console.ReadLine();
+
+                if (endChoice.ToUpper() == "YES")
+                {
+                    StartAtm();
+                    break;
+                }
+
+                if (endChoice.ToUpper() == "NO")
+                {
+                    Logout();
+                    break;
+                }
+
+                Console.WriteLine("Invalid input");
+                Thread.Sleep(1500);
+            }
+
+        }
+
+        public static void AddMoneyToCustomer() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"Add money to customer");
+            Console.WriteLine("===================");
+
+            Console.WriteLine("Please enter customer card number:");
+            string cardNumber = Console.ReadLine();
+            long formatedCreditCardNumber = FormatCardNumber(cardNumber);
+
+            if (formatedCreditCardNumber == -1)
+            {
+                Console.WriteLine("Sorry, invalid credit card number");
+                Thread.Sleep(1500);
+                Console.Clear();
+                AddMoneyToCustomer();
+                return;
+            }
+
+            Customer customer = ATM_DB.Customers.Where(customer => customer.CardNumber == formatedCreditCardNumber).FirstOrDefault();
+
+            if (customer == null) 
+            {
+                Console.WriteLine("Sorry, customer does not exists");
+                Thread.Sleep(1500);
+                Console.Clear();
+                AddMoneyToCustomer();
+                return;
+            }
+
+            Console.WriteLine("===================");
+            Console.WriteLine($"{customer.GetFullName()} has {customer.GetUserBalance()}$ on his account.");
+            Console.WriteLine("===================");
+
+            Console.WriteLine($"How much money do you want to add to {customer.GetFullName()}'s account?");
+
+            int money = 0;
+            bool isMoneyNumber = int.TryParse(Console.ReadLine(), out money);
+
+            if (!isMoneyNumber)
+            {
+                Console.WriteLine("Sorry, invalid amount...");
+                Thread.Sleep(1000);
+                Console.Clear();
+                AddMoneyToCustomer();
+                return;
+            }
+
+            customer.DepositMoneyToAccount(money);
+
+            Console.WriteLine($"Transfering...");
+            Thread.Sleep(2000);
+            Console.WriteLine("===================");
+            Console.WriteLine($"{customer.GetFullName()}'s new balance is {customer.GetUserBalance()}");
+            Console.WriteLine("===================");
+        }
+
+        public static void CheckLoginSessions() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine("Loging Sessions");
+            Console.WriteLine("===================");
+
+            Console.WriteLine("Please enter admins username:");
+            string adminUsername = Console.ReadLine();
+
+            Admin admin = ATM_DB.Admins.Where(admin => admin.Username == adminUsername).FirstOrDefault();
+
+            if (admin == null)
+            {
+                Console.WriteLine($"Admin with username {adminUsername} does not exists.");
+                CheckLoginSessions();
+                return;
+            }
+
+            admin.LoginSessions.ForEach(session =>
+            {
+                Console.WriteLine($"{admin.GetFullName()} has logged in on {session.ToString("dd/MM/yyyy")}, in {session.ToString("hh:mm")} o'clock");
+            });
+            Console.WriteLine("===================");
         }
 
         public static void StartAtmServices(int choice) 
@@ -183,7 +324,7 @@ namespace AtmExercise
                 return;
             }
 
-            Customer customerForTransfer = ATM_DB.Users.Where(customer => customer.CardNumber == formatedCardNumber).FirstOrDefault();
+            Customer customerForTransfer = ATM_DB.Customers.Where(customer => customer.CardNumber == formatedCardNumber).FirstOrDefault();
 
             if (customerForTransfer == null) 
             {
@@ -231,6 +372,7 @@ namespace AtmExercise
         public static void Logout() 
         {
             LoggedCustomer = null;
+            LoggedAdmin = null;
             Console.WriteLine("Logging out...");
             Thread.Sleep(2000);
             Console.Clear();
@@ -243,13 +385,28 @@ namespace AtmExercise
             Console.Clear();
 
             Console.WriteLine("===================");
-            Console.WriteLine($"Welcome {LoggedCustomer.GetFullName()}");
+
+            if (LoggedCustomer != null) 
+            { 
+                Console.WriteLine($"Welcome {LoggedCustomer.GetFullName()}");
+
+                Console.WriteLine("1) Check Balance");
+                Console.WriteLine("2) Cash Withdrawal");
+                Console.WriteLine("3) Cash Deposit");
+                Console.WriteLine("4) Cash Transfer");
+                Console.WriteLine("5) Logout");
+            }
+
+            if (LoggedAdmin != null) { 
+                Console.WriteLine($"Welcome {LoggedAdmin.GetFullName()}");
+
+                Console.WriteLine("1) Add money to customer");
+                Console.WriteLine("2) Check login sessions");
+                Console.WriteLine("3) Logout");
+            }
+
             Console.WriteLine("===================");
-            Console.WriteLine("1) Check Balance");
-            Console.WriteLine("2) Cash Withdrawal");
-            Console.WriteLine("3) Cash Deposit");
-            Console.WriteLine("4) Cash Transfer");
-            Console.WriteLine("5) Logout");
+
 
             int choice = 0;
             bool isChoiceNumber = int.TryParse(Console.ReadLine(), out choice);
@@ -262,7 +419,20 @@ namespace AtmExercise
                 return -1;
             }
 
-            if (choice < 1 || choice > 5)
+            //int endMenuOption;
+
+            //if (LoggedCustomer != null)
+            //{
+            //    endMenuOption = 5;
+            //}
+            //else 
+            //{
+            //    endMenuOption = 3;
+            //}
+
+            var endMenuOption = LoggedCustomer != null ? 5 : 3;
+
+            if (choice < 1 || choice > endMenuOption)
             {
                 Console.WriteLine("Input is not valid, please try agian...");
                 Thread.Sleep(1500);
@@ -318,17 +488,58 @@ namespace AtmExercise
             Console.WriteLine("===================");
             Console.WriteLine("Login");
             Console.WriteLine("===================");
+            Console.WriteLine("1) As Customer");
+            Console.WriteLine("2) As Admin");
+
+            int userChoice = 0;
+            bool isChoiceNumber = int.TryParse(Console.ReadLine(), out userChoice);
+
+            if (!isChoiceNumber) 
+            {
+                Console.WriteLine("Sorry, wrong input, please try again...");
+                Thread.Sleep(1500);
+                Login();
+                return;
+            }
+
+            if (userChoice < 1 || userChoice > 2) 
+            {
+                Console.WriteLine("Sorry, wrong input, please try again...");
+                Thread.Sleep(1500);
+                Login();
+                return;
+            }
+
+            if (userChoice == 1) 
+            {
+                LoginAsCustomer();
+            }
+
+            if (userChoice == 2) 
+            {
+                LoginAsAdmin();
+            }
+        }
+
+
+        public static void LoginAsCustomer() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine("Login as Customer");
+            Console.WriteLine("===================");
 
             Console.WriteLine("Enter card number:");
             string cardNumber = Console.ReadLine();
             long formatedCardNumber = FormatCardNumber(cardNumber);
 
-            if (formatedCardNumber == -1) 
+            if (formatedCardNumber == -1)
             {
                 Console.WriteLine("Sorry, invalid card number, please try agian...");
                 Thread.Sleep(1500);
                 Console.Clear();
-                Login();
+                LoginAsCustomer();
                 return;
             }
 
@@ -338,18 +549,18 @@ namespace AtmExercise
             string pinString = Console.ReadLine();
             bool pin = short.TryParse(pinString, out pinShort);
 
-            if (!pin || pinString.Length != 4) 
+            if (!pin || pinString.Length != 4)
             {
                 Console.WriteLine("Sorry, invalid pin, please try agian...");
                 Thread.Sleep(1500);
                 Console.Clear();
-                Login();
+                LoginAsCustomer();
                 return;
             }
 
-            LoggedCustomer = ATM_DB.Users.Where(user => user.CardNumber == formatedCardNumber && user.CheckPin(pinShort)).FirstOrDefault();
+            LoggedCustomer = ATM_DB.Customers.Where(user => user.CardNumber == formatedCardNumber && user.CheckPin(pinShort)).FirstOrDefault();
 
-            if (LoggedCustomer == null) 
+            if (LoggedCustomer == null)
             {
                 Console.WriteLine("Sorry, user with this credentals does not exist, please try agian, or register new account.");
                 Thread.Sleep(1500);
@@ -357,7 +568,34 @@ namespace AtmExercise
                 StartApp();
                 return;
             }
+        }
 
+        public static void LoginAsAdmin() 
+        {
+            Console.Clear();
+
+            Console.WriteLine("===================");
+            Console.WriteLine("Login as Admin");
+            Console.WriteLine("===================");
+
+            Console.WriteLine("Enter username: ");
+            string username = Console.ReadLine(); 
+
+            Console.WriteLine("Enter password: ");
+            string password = Console.ReadLine();
+
+            LoggedAdmin = ATM_DB.Admins.Where(admin => admin.Username == username && admin.Password == password).FirstOrDefault();
+
+            if (LoggedAdmin == null) 
+            {
+                Console.WriteLine("Sorry, admin with this credentals does not exist, please try agian...");
+                Thread.Sleep(1500);
+                Console.Clear();
+                LoginAsAdmin();
+                return;
+            }
+
+            LoggedAdmin.LogLoginSession();
         }
 
         public static void Register() 
@@ -381,7 +619,7 @@ namespace AtmExercise
                 return;
             }
 
-            ATM_DB.Users.ForEach(user =>
+            ATM_DB.Customers.ForEach(user =>
             {
                 if (formatedCardNumber == user.CardNumber) 
                 {
@@ -428,14 +666,11 @@ namespace AtmExercise
             }
 
             Customer newUser = new Customer(firstName, lastName, formatedCardNumber, pinShort, balance);
-            ATM_DB.Users.Add(newUser);
+            ATM_DB.Customers.Add(newUser);
 
             Console.WriteLine($"{newUser.GetFullName()} has been succssfully registered!");
             LoggedCustomer = newUser;
         }
-
-
-        
 
         public static long FormatCardNumber(string cardNumberString) //1234123412341234 //1234-1234-1234-1234
         {
