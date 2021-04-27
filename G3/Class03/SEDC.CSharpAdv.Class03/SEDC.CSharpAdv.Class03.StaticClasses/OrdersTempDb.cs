@@ -39,7 +39,7 @@ namespace SEDC.CSharpAdv.Class03.StaticClasses
         {
 			order.Id = ++orderId;
 			Orders.Add(order);
-			Users.FirstOrDefault(_user => _user.Id == userId).Orders.Add(order);
+			Users.FirstOrDefault(u => u.Id == userId).Orders.Add(order);
             Console.WriteLine("Order successfuly added!");
         }
 
