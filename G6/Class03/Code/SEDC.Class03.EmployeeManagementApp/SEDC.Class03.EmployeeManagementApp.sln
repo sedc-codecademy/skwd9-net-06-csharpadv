@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.Class03.EmployeeManagementApp.ConsoleApp", "SEDC.Class03.EmployeeManagementApp.ConsoleApp\SEDC.Class03.EmployeeManagementApp.ConsoleApp.csproj", "{18E86A63-6D65-422A-8838-99BD69C45ABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.Class03.EmployeeManagementApp.Domain", "SEDC.Class03.EmployeeManagementApp.Domian\SEDC.Class03.EmployeeManagementApp.Domain.csproj", "{31851AFA-E687-4F98-ADB8-B16FEE01746F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18E86A63-6D65-422A-8838-99BD69C45ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18E86A63-6D65-422A-8838-99BD69C45ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18E86A63-6D65-422A-8838-99BD69C45ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18E86A63-6D65-422A-8838-99BD69C45ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31851AFA-E687-4F98-ADB8-B16FEE01746F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31851AFA-E687-4F98-ADB8-B16FEE01746F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31851AFA-E687-4F98-ADB8-B16FEE01746F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31851AFA-E687-4F98-ADB8-B16FEE01746F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6D63B33-8EE7-43C4-B519-1B7EC88F4FC4}
+	EndGlobalSection
+EndGlobal
