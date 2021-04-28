@@ -16,6 +16,7 @@ Create 4 classes:
 * Dog( from Pet ) with FavoriteFood
 * Cat( from Pet ) with Lazy and LivesLeft
 * Fish( from Pet ) with Color, Size
+
 Create a PetStore generic class with:
 * Generic list of pets - Dogs, Cats or Fish depending on what is passed as T
 * Generic method PrintsPets() - Prints Dogs, Cats or Fish depending on what is passed as T
