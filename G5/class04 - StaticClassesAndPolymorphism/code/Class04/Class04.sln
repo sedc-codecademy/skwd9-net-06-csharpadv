@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polimorphism", "Polimorphism\Polimorphism.csproj", "{E3B910C6-0CD1-4F16-946C-0BCE08E6E55D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GettersAndSetters", "GettersAndSetters\GettersAndSetters.csproj", "{19430232-EED6-41FA-BB85-2C588B751AD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticClasses", "StaticClasses\StaticClasses.csproj", "{CAA4F87E-27B3-4152-9B2F-9DB94DA9D2EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E3B910C6-0CD1-4F16-946C-0BCE08E6E55D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3B910C6-0CD1-4F16-946C-0BCE08E6E55D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3B910C6-0CD1-4F16-946C-0BCE08E6E55D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19430232-EED6-41FA-BB85-2C588B751AD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19430232-EED6-41FA-BB85-2C588B751AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19430232-EED6-41FA-BB85-2C588B751AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19430232-EED6-41FA-BB85-2C588B751AD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA4F87E-27B3-4152-9B2F-9DB94DA9D2EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA4F87E-27B3-4152-9B2F-9DB94DA9D2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA4F87E-27B3-4152-9B2F-9DB94DA9D2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA4F87E-27B3-4152-9B2F-9DB94DA9D2EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

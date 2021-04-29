@@ -1,4 +1,5 @@
 ﻿using Polimorphism.Entities;
+using Polimorphism.Services;
 using System;
 
 namespace Polimorphism
@@ -7,8 +8,24 @@ namespace Polimorphism
     {
         static void Main(string[] args)
         {
+            //Compile time polymorphism
+            GreetingsService _greetingService = new GreetingsService();
+            _greetingService.SayHello("Viktor");
+            _greetingService.SayHello("Viktor", "Jakovlev");
+            _greetingService.SayHello("Viktor", "Milan", "Jakovlev");
+            _greetingService.SayHello("Viktor", "Jakovlev", 31);
+
+            var options = new GreetingsOptions()
+            {
+                Name = "Viktor",
+                MiddleName = "Milan",
+                LastName = "Jakovlev"
+            };
+
+            _greetingService.SayHello(options);
+
             //Runtime polymorphism
-            var majlo = new Dog() 
+            Dog majlo = new Dog() 
             {
                 Name = "Majlo",
                 IsGoodBoy = true
