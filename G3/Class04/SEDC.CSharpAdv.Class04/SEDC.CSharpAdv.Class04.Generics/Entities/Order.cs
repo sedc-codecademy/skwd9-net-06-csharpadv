@@ -11,7 +11,7 @@ namespace SEDC.CSharpAdv.Class04.Generics.Entities
 
         public override string GetInfo()
         {
-            throw new NotImplementedException();
+            return $"Order with id: {Id} Recevier: {Receiver} Address: {Address}";
         }
     }
 }
