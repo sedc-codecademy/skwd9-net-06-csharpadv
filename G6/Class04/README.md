@@ -1,221 +1,149 @@
-# Class 03 - Generics and Extension methods 🥪
-## Generics 🔹
-As we know, C# is a strictly typed language and when we are building application, it is important that we use and plan the types of our data. But as you can imagine this can limit us sometimes, since there can be some business logic that requires multiple types to be accepted or to have the same logic for many different types. That is where generics come in to play. Basically, we can have methods or classes that can use a place holder type when they are declared and use different types in different scenarios, depending on the use case scenario. There is a convention in C# for writing these placeholder types and that is with the letter **T**. This can be any letter or word but T is the convention. Classes and methods are marked as generic with the < > brackets, inside which we write the place holder on declaration and the type we want to use on instantiation. 
-### Generic methods
-Generic methods work exactly the same as standard methods, but have one extra feature. That is a generic type. The generic type can represent any type or it can represent range of types in an inheritance tree. Generic methods can be used to implement logic for multiple types, skipping the process of creating multiple separate methods for each type.
-#### Non generic example
+# Class 02 - Static classes, members and polymorphism 🍔
+## Static Classes 🔹
+Until this point, classes were something that we can create an instance and use it whenever we need it. If we need another object of that class, we can just create another instance and use it again. When our code block ends, we can't use our instances of the classes we instantiated in that code block. But there is another type of classes and members we can use that differ from this system. Those are the static classes and members. Static in C# basically means that it will be created and stored in memory at some point when the application starts running and it will stay there, accessible from everywhere, at the same place, until the application is finished. This means that the static class or members can be accessed from anywhere, any time, store stuff in them or use methods without worrying in what code block and in what scope you are currently working. Static classes also have ONLY ONE instance, meaning that you can't just create more instances of a static class. The one instance that is created automatically is the only one you can interact for the rest of the application. This means that there is also no use in the new keyword, or a variable that holds this static class. The class is already created when you start running your code, so you can immediately use it by just writing the name of the class, as if it existed already. 
+#### Static class with static members
 ```csharp
-public void GoThroughStrings(List<string> strings)
+public static class TextHelper
 {
-    foreach (string str in strings)
+    public static int CapitalLetterUses = 0;
+    public static string CapitalFirstLetter(string word)
     {
-        Console.WriteLine(str);
-    }
-}
-public void GoThroughInts(List<int> ints)
-{
-    foreach (int num in ints)
-    {
-        Console.WriteLine(num);
-    }
-}
-```
-```csharp
-List<int> ints = new List<int>() { 1, 3, 5, 7 };
-List<string> strings = new List<string>() { "Bob", "Jill", "Greg" };
-GoThroughStrings(strings);
-GoThroughInts(ints);
-```
-#### Generic example
-```csharp
-public static void GoThrough<T>(List<T> items)
-{
-    foreach (T item in items)
-    {
-        Console.WriteLine(item);
-    }
-}
-```
-```csharp
-List<int> ints = new List<int>() { 1, 3, 5, 7 };
-List<string> strings = new List<string>() { "Bob", "Jill", "Greg" };
-GoThrough(strings);
-GoThrough(ints);
-```
-### Generic classes
-Generic classes share the idea of generic code and they also have a generic type that can serve as a place holder when the class is declared. When we need to create a new instance of the class we must provide what type will replace the generic placeholder - T. Generic classes are great because when we set the whole class as generic, we can use the generic type throughout the class methods and properties without stating that those methods are generic. Generic classes are often used for building generic services or service like structures that can do actions such as CRUD ( Create, Read, Update, Delete ) without needing to do the same logic for every entity in our code. That way we can have one centralized logic for manipulating with data for almost all our types. This makes our application easily maintainable and scalable. 
-```csharp
-public class GenericListHelper<T>
-{
-    public static void GoThrough(List<T> items)
-    {
-        foreach (T item in items)
+        if (word.Length == 0)
         {
-            Console.WriteLine(item);
-        }
-    }
-    public static void GetInfo(List<T> items)
-    {
-        T first = items[0];
-        Console.WriteLine($"This list has {items.Count} members and is of type {items.GetType().FullName}!");
-    }
-}
-```
-```csharp
-List<int> ints = new List<int>() { 1, 3, 5, 7 };
-List<bool> bools = new List<bool>() { true, false, true, true };
-
-GenericListHelper<int> intHelper = new GenericListHelper<int>();
-GenericListHelper<bool> boolHelper = new GenericListHelper<bool>();
-
-intHelper.GetInfo(ints);
-boolHelper.GetInfo(bools);
-```
-### Using generics within a certain scope
-Generic classes and methods can also be used in a certain scope. This means that just certain types can replace the generic type T. The scope is defined by the inheritance tree of the type we use to create this limitation. With that all classes that are derived from that class can replace T. This also means that T in the class or method will have all the properties and methods of that class, because we know those exist on all derived classes. 
-```csharp
-public abstract class BaseEntity
-{
-	public int Id { get; set; }
-	public abstract string GetInfo();
-}
-
-public class Order : BaseEntity
-{
-	public string Receiver { get; set; }
-	public string Address { get; set; }
-
-	public override string GetInfo()
-	{
-		return $"{Id}) {Receiver} - {Address}";
-	}
-}
-
-public class Product : BaseEntity
-{
-	public string Title { get; set; }
-	public string Description { get; set; }
-
-	public override string GetInfo()
-	{
-		return $"{Id}) {Title} - {Description}";
-	}
-}
-```
-#### Generic method
-```csharp
-public void PrintAll<T>(List<T> list) where T : BaseEntity
-{
-	foreach (T item in list)
-	{
-	    // We can call GetInfo on T because T knows GetInfo exist on any type that will be passed
-		Console.WriteLine(item.GetInfo());
-	}
-}
-```
-```csharp
-List<Order> orders = new List<Order>() { ... orders ... };
-List<Product> products = new List<Order>() { ... products ... };
-
-PrintAll(orders);
-PrintAll(products);
-```
-#### Generic class
-```csharp
-public class GenericDb<T> where T : BaseEntity
-{
-	private List<T> Db;
-	public GenericDb()
-	{
-		Db = new List<T>();
-	}
-	public void PrintAll()
-	{
-		foreach (T item in Db)
-		{
-			Console.WriteLine(item.GetInfo());
-		}
-	}
-	public void Insert(T item)
-	{
-		Db.Add(item);
-		Console.WriteLine($"Item was added in the {item.GetType().Name} Db!");
-	}
-}
-```
-```csharp
-GenericDb<Order> orderDb = new GenericDb<Order>();
-GenericDb<Product> productDb = new GenericDb<Product>();
-
-OrderDb.Insert(new Order() { Id = 1, Address = "Bob street 29", Receiver = "Bob" });
-ProductDb.Insert(new Product() { Id = 1, Description = "For gaming", Title = "Mouse" });
-
-Console.WriteLine("Orders:");
-OrderDb.PrintAll();
-Console.WriteLine("Produts:");
-ProductDb.PrintAll();
-```
-## Extension methods 🔹
-Extension methods are one of the most interesting methods you can use in C#. They are basically methods that can be called from a type, as they were part of that type. This means that we can write methods that can be called from primitive types such as String, Int, Bool etc. We can also create extension methods for types that are provided from the .NET framework or provided from a different library. We can basically use it to attach a method which is not part of a type, to that type as if it was. These methods are amazing if we need some special logic to be executed frequently on some type, without declaring a new instance of a service class or searching for the method name of a specific method for that logic. 
-
-### How to use them
-Extension methods must be created in a static class and must be static ( Since we want them to be accessible from anywhere ). They also have some special rules for the parameters. In order to attach the extension method to a type, we must type as a first parameter the keyword **this**, after that the type that we want to attach the extension method to and the name of the parameter so we can use it in the implementation of the method. Since this method will be called on the type it self directly, this first parameter is filled with the value of the type we call the method it self. So if we have an extension method with only the first parameter, that extension method will not require any parameters when it is called. If we add a second parameter, that would be the first parameter when we call the method etc.
-```csharp
-public static class StringHelper
-{
-    public static string Shorten(this string str, int numberOfWords)
-    {
-        if (numberOfWords < 0)
-            throw new ArgumentException("numberOfWords should be greater or equal to 0.");
-
-        if (str.Length == 0)
-            return "";
-
-        string[] words = str.Split(' ');
-
-        if (words.Length < numberOfWords)
-            return str;
-
-        List<string> substring = words.Take(numberOfWords).ToList();
-
-        string result = string.Join(" ", substring);
-
-        return result + "...";
-    }
-
-    public static string QuoteString(this string text)
-    {
-        return '"' + text + '"';
-    }
-}
-```
-```csharp
-string bobSong = "Heeey, this is the Bob song. Yea. Bob song. It is really awesome! Extra words, extra words!";
-bob.shorten(4);
-```
-### Piggybacking
-Extension methods can be used anywhere, but on one condition: That we have the namespace included in that document. If the extension method is used on multiple places and we don't want to add everywhere a new using for the extension method it self, we can change the namespace to the extension method class to some namespace that is already used on most of the places where we need the extension method. We can use the namespace of the project it self, or we can even use a namespace to some .NET internal library such as System. This practice is called Piggybacking.
-#### Using System namespace
-```csharp
-namespace System
-{
-    public static class StringHelper
-	{
-		public static string Shorten(this string str, int numberOfWords)
+            return "Empty String";
+        } 
+        else if (word.Length == 1)
         {
-            // Code
+            return char.ToUpper(word[0]).ToString(); ;
         }
-        public static string QuoteString(this string text)
+        else
         {
-            // Code
+            return char.ToUpper(word[0]) + word.Substring(1);
         }
+        CapitalLetterUses++;
     }
 }
 ```
+#### Using static class
+```csharp
+Console.WriteLine(TextHelper.CapitalFirstLetter("bob"));
+```
+### Static Members
+Because a static class has only one instance and you can't use a variable to store it or make another instance, ALL MEMBERS of the static class MUST BE STATIC as well. But this is not the case for all static members. We can have static members in a class that is not static. This is a different scenario. Since the class is not static, we can create multiple instance of it, but the static members will not be part of any new instance. The static members can only be accessed from the class name it self, separately. With the class name, we can only access the static members and not the non-static members. 
 
+### Where to use and not to use static classes
+Static classes are very convenient when developers are writing logic that is universal and that they will need at multiple different places, fast, without jumping through the hoops of instantiation, constructors etc. Static classes can also keep data that is available throughout the application, like configuration data or just storing some values until the end of our application. This can be used to simulate a temporary database for quick development. But, as cool as the static classes sound, they carry weight with them when we run the application. Unlike the standard classes that are cleared from the memory when we are done using them, the static classes stay in memory throughout the whole application cycle and never go away. This can be an issue if we rely too much on them, so that is why they are used only when their usefulness outweighs their cost in memory. 
+
+#### Standard class with static method
+```csharp
+public class Order
+{
+  public int Id { get; set; }
+  public string Title { get; set; }
+  public string Description { get; set; }
+  public string Print()
+  {
+    // We can use the helper class anywhere we need it without an instance
+    return $"{TextHelper.CapitalFirstLetter(Title)} - {Description}";
+  }
+  public static bool IsOrderValid(Order order)
+  {
+    if (order.Id <= 0 && order.Title == "") return false;
+    return true;
+  }
+}
+```
+#### Using the standard class and the static method
+```csharp
+// We must have an instance to call Print()
+Order ord = new Order();
+Console.WriteLine(ord.Print());
+// We can't call Print() on the Order class
+Order.Print(); // Will show as an error
+// We can call IsOrderValid on Order class
+Console.WriteLine(Order.IsOrderValid(ord));
+// We can't call IsOrderValid on the instance of the class Order
+ord.IsOrderValid(ord); // Will show an error
+```
+## Polymorphism 🔹
+Polymorphism is one of the base concepts of Object Oriented programming. Since C# is an object oriented language and was built that way, this concept is embedded in it's core. The name Polymorphism can sound a bit complicated, but the idea of polymorphism is not that complicated. Methods in C# need to have different names for us to differentiate them. We can't create methods that share the same name as well. But that is not always the case. With polymorphism we can actually have multiple methods with the same name and the compiler can differentiate them one from the other. This is done in few ways:
+* Compile time polymorphism ( Method overloading ) - This type of polymorphism is decided on compile time and the compiler can basically tell which method is which by looking at their signature. The signature of a method is the order, type and number of parameters that they have. So if those 3 criteria match, the compiler will decide that 2 methods are the same, and it will throw an error. If only one of those criteria is different, then the compiler will differentiate between as many methods with the same name, as long as they all have different signatures. 
+```csharp
+// Static polymorphism ( Method overloading )
+// Both methods have the same name
+// Their signature is different
+public static void PetStatus(Dog pet, string ownerName)
+{
+  Console.WriteLine($"Hey there {ownerName}");
+  if (pet.IsGoodBoi) Console.WriteLine("This dog is a good boi :)");
+  else Console.WriteLine("This dog is not really a good boi :(");
+}
+// Signature is different when the order of the properties do not match
+public static void PetStatus(string ownerName, Dog pet)
+{
+  Console.WriteLine($"Hey there {ownerName}. Happy to see you again!");
+  if (pet.IsGoodBoi) Console.WriteLine("This dog is still a good boi :)");
+  else Console.WriteLine("This dog is still not really a good boi :(");
+}
+// Sugnature is different if the property types do not match
+public static void PetStatus(Cat pet, string ownerName)
+{
+  Console.WriteLine($"Hey there {ownerName}");
+  if (pet.IsLazy) Console.WriteLine("This cat is really lazy :(");
+  else Console.WriteLine("This cat is cool and not lazy at all :)");
+}
+// Sugnature is different if the number of properties do not match
+public static void PetStatus(Cat pet)
+{
+  Console.WriteLine($"Hey, a cat with no owner.");
+  if (pet.IsLazy) Console.WriteLine("This cat is really lazy :(");
+  else Console.WriteLine("This cat is cool and not lazy at all :)");
+}
+```
+```csharp
+// They all work as intended
+PetStatus(sparky, "Bob");
+PetStatus("Bob", sparky);
+PetStatus(meow, "Jill");
+PetStatus(meow);
+```
+* Runtime polymorphism ( Method overriding ) - This type of polymorphism is decided on runtime, and is done with overriding a parent class method. This means that there can be multiple classes that have the same method from a parent class, but they can have different implementation in it. 
+```csharp
+public class Pet
+{
+  public string Name { get; set; }
+  public virtual void Eat()
+  {
+    Console.WriteLine("Nom nom nom");
+  }
+}
+public class Dog : Pet
+{
+  public bool IsGoodBoi { get; set; }
+  public override void Eat()
+  {
+    Console.WriteLine("Nom nom noming on dog food!");
+  }
+}
+public class Cat : Pet
+{
+  public bool IsLazy { get; set; }
+  public override void Eat()
+  {
+    Console.WriteLine("Nom nom noming on cat food!");
+  }
+}
+```
+```csharp
+Dog sparky = new Dog() { Name = "Sparky", IsGoodBoi = true };
+Cat meow = new Cat() { Name = "Meow", IsLazy = false };
+
+// They work as intended
+sparky.Eat();
+meow.Eat();
+```
 ## Extra Materials 📘
-* [Microsoft - Generics](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/)
-* [Microsoft - Extension Methods](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods)
-* [Dot net perls on Extension methods](https://www.dotnetperls.com/extension)
-* [Dot net perls on Generics](https://www.dotnetperls.com/generic)
-* [Extension methods for building fluent code](https://killalldefects.com/2020/01/18/using-extension-methods-in-c-to-build-fluent-code/)
+* [Microsoft - Static class and members](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/static-classes-and-static-class-members)
+* [Microsoft - Polymorphism](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/polymorphism)
+* [Static keyword in C#](https://medium.com/hackernoon/c-static-vs-instance-classes-and-methods-50fe8987b231)
+* [Understanding polymorphism in C#](https://www.c-sharpcorner.com/UploadFile/ff2f08/understanding-polymorphism-in-C-Sharp)
