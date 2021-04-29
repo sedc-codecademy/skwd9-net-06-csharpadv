@@ -11,7 +11,7 @@ namespace SEDC.CSharpAdv.Class04.Generics.Entities
 
         public override string GetInfo()
         {
-            throw new NotImplementedException();
+            return $"Id: {Id}, Title: {Title}, Descrtiption: {Description}";
         }
     }
 }

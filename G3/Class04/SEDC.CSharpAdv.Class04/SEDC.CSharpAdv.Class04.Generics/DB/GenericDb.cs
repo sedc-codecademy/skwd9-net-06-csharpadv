@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SEDC.CSharpAdv.Class04.Generics.DB
 {
-    public class GenericDb<T>
+    public class GenericDb<T> : IGenericDb<T>
         where T : BaseEntity
     {
         private List<T> Db { get; set; }
