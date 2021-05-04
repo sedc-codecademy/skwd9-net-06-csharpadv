@@ -51,9 +51,15 @@ namespace OrderingApp.Databse
 			Console.WriteLine("Order successfully added!");
 		}
 
-		public static void DeleteOrder() 
+		public static void DeleteOrder(int userId, int orderId) 
 		{
-		
+			Order orderForDelete = Orders.Where(order => order.Id == orderId).FirstOrDefault();
+			Orders.Remove(orderForDelete);
+
+			User user = Users.Where(user => user.Id == userId).FirstOrDefault();
+			user.Orders.Remove(orderForDelete);
+
+			Console.WriteLine("Order successfully removed!");
 		}
     }
 }
