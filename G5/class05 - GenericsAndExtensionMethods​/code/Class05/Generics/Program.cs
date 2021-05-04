@@ -9,6 +9,7 @@ namespace Generics
         static void Main(string[] args)
         {
             GenericMethods();
+            //GenericClasses();
 
             Console.ReadLine();
         }
