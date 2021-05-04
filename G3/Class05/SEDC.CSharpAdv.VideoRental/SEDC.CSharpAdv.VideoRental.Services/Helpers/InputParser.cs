@@ -9,6 +9,28 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Helpers
         private static List<string> _validConfirmInputs = new List<string> { "Y", "y", "Yes", "1", "True" };
         private static List<string> _validDeclineInputs = new List<string> { "N", "n", "No", "0", "False" };
 
+        public static DateTime ToDateTime()
+        {
+            while (true)
+            {
+                Console.Write("Enter year: ");
+                int year = ToInteger(1900, DateTime.Now.Year - 18);
+                Console.Write("\nEnter month: ");
+                int month = ToInteger(1, 12);
+                Console.Write("\nEnter day: ");
+                int day = ToInteger(1, DateTime.DaysInMonth(year, month));
+                try
+                {
+                    DateTime dob = new DateTime(year, month, day);
+                    return dob;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Not valid input");
+                }
+            }
+        }
+
         public static bool ToConfirm()
         {
             while (true)
