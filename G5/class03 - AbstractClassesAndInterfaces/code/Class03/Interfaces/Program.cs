@@ -10,7 +10,7 @@ namespace Interfaces
             //Can't create an instance of an Interface
             //IUser user = new IUser();
 
-            var AppSerice = new AppService();
+            AppService AppSerice = new AppService();
             AppSerice.RunApp();
 
             Console.ReadLine();

@@ -8,16 +8,18 @@ namespace Interfaces
 {
     public class AppService
     {
-        public IGreetingsService _gs { get; set; }
+        public IGreetingsService _greetingsService { get; set; }
         public AppService()
         {
-            _gs = new GreetingsService2();
+            _greetingsService = new GreetingsService();
+            //_greetingsService = new GreetingsService2();
         }
+
         public void RunApp() 
         {
-            _gs.SayHello("Viktor");
+            _greetingsService.SayHello("Viktor");
 
-            var name = _gs.ReturnName("Viktor");
+            var name = _greetingsService.ReturnName("Viktor");
             var nameToUpper = name.ToUpper();
 
             Console.WriteLine(nameToUpper);
