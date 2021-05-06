@@ -19,5 +19,14 @@ namespace ExtensionMethods.Helpers
             T first = items[0];
             Console.WriteLine($"This list has {items.Count} members and is of type {first.GetType().Name}!");
         }
+
+        public static void ForEachWithIndex<T>(this IEnumerable<T> source, Action<T, int> action) 
+        {
+            var index = 0;
+            foreach (T item in source)
+            {
+                action(item, index++);
+            }
+        }
     }
 }
