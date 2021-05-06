@@ -113,6 +113,79 @@ namespace SEDC.CSharpAdv.Class06.AdvanceLINQ
             //    }
             //}
 
+            var groupByPartTime = Database.Students.GroupBy(x => x.IsPartTime);
+
+            // Intersect
+            // Gets all elements that are conitained in both collections
+            var modules = Database.Subjects.Select(x => x.Modules);
+            var attendings = Database.Subjects.Select(x => x.StudentsAttending);
+
+            var intersect = modules.Intersect(attendings);
+
+            var intersect1 = Database.Subjects
+                .Select(x => x.Modules)
+                .Intersect(Database.Subjects
+                    .Select(x => x.StudentsAttending));
+
+            // Union
+            // Gets all unique elements in both collections
+            var union = modules.Union(attendings);
+
+            // SelectMany
+            // Flatens collections
+            List<List<int>> listOfInts = new List<List<int>>
+            {
+                new List<int> { 1, 2, 3, 4},
+                new List<int> { 11, 22, 33, 44},
+                new List<int> { 111, 222, 333, 444 },
+                new List<int> { 1111, 2222, 3333, 4444 }
+            };
+            List<int> listOfIntegers = new List<int>();
+            foreach (var itemList in listOfInts)
+            {
+                foreach (var element in itemList)
+                {
+                    listOfIntegers.Add(element);
+                }
+            }
+
+            var selectMany = listOfInts.SelectMany(x => x);
+
+            List<List<Subject>> studentSubjcets = Database.Students.Select(x => x.Subjects).ToList();
+            List<Subject> studentSubjcets1 = Database.Students.SelectMany(x => x.Subjects).ToList();
+
+            // Average
+            double ageAvarage = Database.Students.Average(x => x.Age);
+
+            // Concat
+            var concatenatedLists = modules.Concat(attendings);
+
+            // Count
+            int count = Database.Students.Count(x => x.IsPartTime);
+
+            // Distinct
+            var distinctModules = Database.Subjects.Select(x => x.Modules).Distinct();
+
+            // Except
+            var list1 = new List<int> { 1, 2, 3, 4, 5 };
+            var list2 = new List<int> { 3, 4, 6, 7, 8 };
+
+            var except = list1.Except(list2).ToList();
+
+            // OrderBy
+            var orderByAge = Database.Students.OrderBy(x => x.Age);
+            var orderByAgeDescending = Database.Students.OrderByDescending(x => x.Age);
+
+            // Take and Skip
+            var first2Stdents = Database.Students.Take(2); //0,1
+            var skip2Take3 = Database.Students.Skip(2).Take(3); //skip 0,1 take 2,3,4 
+
+            // ToDictionary
+            var toDictionary = Database.Students.ToDictionary(key => key.Id, value => value);
+            var toDictionary1 = Database.Students.ToDictionary(key => key.FirstName, value => value.Subjects);
+
+            var abc = Database.Students.Select(x => new { x.FirstName, x.Subjects });
+
             Console.ReadLine();
         }
     }
