@@ -14,7 +14,7 @@ namespace SEDC.CSharpAdv.Class06.Domain
             new Student(30, "Liana", "Wurtz", 25, false),
             new Student(41, "Bill", "Zu", 38, false),
             new Student(42, "Trajan", "Stevkovski", 22, true),
-            new Student(43, "Tosho", "Todorovski", 22, true),
+            new Student(43, "Nikola", "Dalchevski", 22, true),
             new Student(44, "StudentName", "StudentLastName", 31, true)
         };
         public static List<Subject> Subjects = new List<Subject>()
