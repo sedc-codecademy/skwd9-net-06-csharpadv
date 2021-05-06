@@ -7,13 +7,20 @@ namespace Generics
 {
     class Program
     {
-        public static GenericDB<Order> OrdersDb = new GenericDB<Order>();
+        public static GenericDB<Order> OrdersDb { get; set; } = new GenericDB<Order>();
+
         public static GenericDB<Product> ProductsDb = new GenericDB<Product>();
+
+        public static GenericDB<User> UsersDb = new GenericDB<User>();
 
         static void Main(string[] args)
         {
             //GenericMethods();
             GenericClasses();
+
+            UsersDb.Insert(new User() { Id = 1, Username = "Viktor", Password = "123" });
+            var result = UsersDb.GetById(1);
+            UsersDb.RemoveById(1);
 
             Console.ReadLine();
         }
