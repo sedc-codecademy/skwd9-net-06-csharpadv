@@ -13,5 +13,11 @@ namespace Generics.Entities
         {
             return $"{Id}) {Title} - {Description}";
         }
+
+
+        public int Sum(int number1, int number2)
+        {
+            return number1 + number2;
+        }
     }
 }
