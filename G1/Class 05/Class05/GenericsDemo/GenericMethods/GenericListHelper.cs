@@ -6,7 +6,7 @@ namespace GenericsDemo.GenericMethods
 {
     public static class GenericListHelper
     {
-        public static string GetElementsOfTheList<T>(List<T> list)
+        public static string GetElementsOfTheList<T>(this List<T> list)
         {
             string info = string.Empty;
 
@@ -22,7 +22,7 @@ namespace GenericsDemo.GenericMethods
             return info;
         }
 
-        public static string GetSequenceElementsOfTheList<T>(List<T> list)
+        public static string GetSequenceElementsOfTheList<T>(this List<T> list)
         {
             return string.Join("; ", list);
         }
