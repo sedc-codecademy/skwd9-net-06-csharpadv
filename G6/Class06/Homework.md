@@ -1,4 +1,4 @@
-## Task 2
+## Task 1
 Create 4 classes:
 * Pet( abstract ) with Name, Type, Age and abstract PrintInfo()
 * Dog( from Pet ) with FavoriteFood
