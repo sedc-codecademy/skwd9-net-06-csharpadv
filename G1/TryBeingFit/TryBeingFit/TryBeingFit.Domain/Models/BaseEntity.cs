@@ -11,8 +11,8 @@ namespace TryBeingFit.Domain.Models
 
         public BaseEntity()
         {
-            Random rnd = new Random();
-            Id = rnd.Next(1, int.MaxValue);
+            //Random rnd = new Random();
+            //Id = rnd.Next(1, int.MaxValue);
         }
     }
 }
