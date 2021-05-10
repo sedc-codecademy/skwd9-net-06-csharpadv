@@ -3,9 +3,14 @@ Task 1
 Create 4 classes:
 
 Pet( abstract ) with Name, Type, Age and abstract PrintInfo()
+
 Dog( from Pet ) with FavoriteFood
+
 Cat( from Pet ) with Lazy and LivesLeft
+
 Fish( from Pet ) with Color, Size
+
+
 Create a PetStore generic class with:
 
 Generic list of pets - Dogs, Cats or Fish depending on what is passed as T
