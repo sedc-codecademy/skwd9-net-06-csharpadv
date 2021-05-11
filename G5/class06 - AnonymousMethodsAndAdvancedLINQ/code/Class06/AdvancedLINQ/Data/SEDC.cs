@@ -1,4 +1,5 @@
 ﻿using AdvancedLINQ.Entities;
+using AdvancedLINQ.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,8 @@ namespace AdvancedLINQ.Data
             new Student(27, "Greg", "Gregsky", 45, false),
             new Student(29, "Anne", "Willson", 31, true),
             new Student(30, "Liana", "Wurtz", 25, false),
-            new Student(41, "Bill", "Zu", 38, false)
+            new Student(41, "Bill", "Zu", 38, false),
+            new Student(08, "Bob", "Wayne", 37, true),
         };
 
         public static List<Subject> Subjects = new List<Subject>()

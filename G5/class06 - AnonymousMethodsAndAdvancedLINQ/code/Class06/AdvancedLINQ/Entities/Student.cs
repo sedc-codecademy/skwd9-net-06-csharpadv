@@ -21,6 +21,7 @@ namespace AdvancedLINQ.Entities
             LastName = last;
             Age = age;
             IsPartTime = partTime;
+            Subjects = new List<Subject>();
         }
 
         public override string Info()
