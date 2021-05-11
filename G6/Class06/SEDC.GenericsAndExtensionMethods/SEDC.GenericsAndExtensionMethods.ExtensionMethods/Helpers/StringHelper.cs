@@ -25,5 +25,10 @@ namespace SEDC.GenericsAndExtensionMethods.ExtensionMethods.Helpers
             string result = string.Join(" ", substring);
             return result + ".... ----> Read more";
         }
+
+        public static string QuoteString(this string str)
+        {
+            return '"' + str + '"';
+        }
     }
 }
