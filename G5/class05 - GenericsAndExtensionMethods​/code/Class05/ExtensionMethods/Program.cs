@@ -43,6 +43,9 @@ namespace ExtensionMethods
             strings.GetInfoFor();
             ints.GetInfoFor();
             bools.GetInfoFor();
+
+            //Action<string, int> functionBody = (str, index) => Console.WriteLine($"{index + 1}) {str}");
+            strings.ForEachWithIndex((str, index) => Console.WriteLine($"{index + 1}) {str}"));
         }
 
         public static string Shorten(string inputString, int numberOfWords) 
