@@ -46,6 +46,9 @@ namespace ExtensionMethods
 
             //Action<string, int> functionBody = (str, index) => Console.WriteLine($"{index + 1}) {str}");
             strings.ForEachWithIndex((str, index) => Console.WriteLine($"{index + 1}) {str}"));
+
+            strings.ForEach(x => Console.WriteLine(x));
+ 
         }
 
         public static string Shorten(string inputString, int numberOfWords) 
