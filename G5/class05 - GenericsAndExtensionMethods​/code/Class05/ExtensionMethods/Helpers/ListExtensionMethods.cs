@@ -20,7 +20,7 @@ namespace ExtensionMethods.Helpers
             Console.WriteLine($"This list has {items.Count} members and is of type {first.GetType().Name}!");
         }
 
-        public static void ForEachWithIndex<T>(this IEnumerable<T> source, Action<T, int> action) 
+        public static void ForEachWithIndex<T>(this List<T> source, Action<T, int> action) 
         {
             var index = 0;
             foreach (T item in source)
@@ -28,5 +28,15 @@ namespace ExtensionMethods.Helpers
                 action(item, index++);
             }
         }
+
+        public static void ForEachWithIndex<T>(this List<T> source, Action<T> action)
+        {
+            foreach (T item in source)
+            {
+                action(item);
+            }
+        }
+
+
     }
 }
