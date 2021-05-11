@@ -1,0 +1,13 @@
+Models/Entities
+Models: 
+ - User
+ - PremiumUser : User
+ - StandardUser : User
+ - Trainer : User
+ - Training
+ - VideoTraining : Training
+ - LiveTraining : Training
+Enums:
+ - UserRoles (Standard, Premium, Trainer)
+ - Difficulty (Easy, Medium, Hard)
+ - FitLevel (rookie, starter, master)*
