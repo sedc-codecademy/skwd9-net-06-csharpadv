@@ -44,6 +44,10 @@ namespace GenericsDemo
             Console.WriteLine(GenericListHelper.GetElementsOfTheList<Human>(humans));
             Console.WriteLine(GenericListHelper.GetSequenceElementsOfTheList<Human>(humans));
 
+            //Extension methods
+            GenericListHelper.GetElementsOfTheList<Human>(humans);
+            humans.GetElementsOfTheList();
+            humans.GetSequenceElementsOfTheList();
 
             //SWAP
             //int a = 5;
