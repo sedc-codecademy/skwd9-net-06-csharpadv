@@ -10,16 +10,25 @@ namespace SEDC.CSharpAdv.Class07.EventsAdv
         {
             // publishers
             var rentalStore = new RentalStore();
+            var bolckbasterStore = new BlockbasterStore();
 
 
             // subscribers
             var mailService = new EmailService();
             var pushNorifications = new PushNotifications();
 
+            bolckbasterStore.Notifications += mailService.SendMail;
+            bolckbasterStore.Notifications += pushNorifications.SendPushNotification;
             rentalStore.NotifyUsers += mailService.SendMail;
             rentalStore.NotifyUsers += pushNorifications.SendPushNotification;
 
+            rentalStore.NotifyUsersVideoEvent += mailService.SendMail;
+            rentalStore.NotifyUsersVideoEvent += pushNorifications.SendPushNotification;
+
+            //bolckbasterStore.Notifications -= pushNorifications.SendPushNotification;
+
             rentalStore.AddNewMovie("Some movie");
+            bolckbasterStore.NewMovieRelease("Treto poluvreme");
 
             Console.ReadLine();
         }
