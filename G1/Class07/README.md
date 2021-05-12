@@ -335,5 +335,4 @@ List<Student> sortedStudentsThen = SEDC.Students
 
 - [Microsoft - Lambda Expressions](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)
 - [Microsoft - LINQ](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/)
-- [Dot net perls on LINQ](https://www.dotnetperls.com/linq)
 - [Action, Func and Predicate](https://www.infoworld.com/article/3057152/how-to-work-with-action-func-and-predicate-delegates-in-csharp.html)
