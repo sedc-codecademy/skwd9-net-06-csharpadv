@@ -12,7 +12,11 @@ namespace Domain
             new Student(27, "Greg", "Gregsky", 45, false),
             new Student(29, "Anne", "Willson", 31, true),
             new Student(30, "Liana", "Wurtz", 25, false),
-            new Student(41, "Bill", "Zu", 38, false)
+            new Student(41, "Bill", "Zu", 38, false),
+            new Student(55, "Risto", "Bobsky", 55, false),
+            new Student(56, "Anne", "Bobsky", 55, false),
+            new Student(57, "z", "Bobsky", 55, false),
+            new Student(58, "Z", "Bobsky", 55, false),
         };
         public static List<Subject> Subjects = new List<Subject>()
         {
