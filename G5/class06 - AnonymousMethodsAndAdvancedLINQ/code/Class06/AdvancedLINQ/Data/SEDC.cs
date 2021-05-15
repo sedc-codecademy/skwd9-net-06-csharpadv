@@ -38,6 +38,7 @@ namespace AdvancedLINQ.Data
             Students[3].Subjects = new List<Subject>() { Subjects[3], Subjects[4] };
             Students[4].Subjects = new List<Subject>() { Subjects[1], Subjects[2], Subjects[3], Subjects[5] };
             Students[5].Subjects = new List<Subject>() { Subjects[2] };
+            Students[6].Subjects = new List<Subject>() { Subjects[2], Subjects[3] };
         }
     }
 }
