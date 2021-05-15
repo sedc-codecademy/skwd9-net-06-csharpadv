@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqHomework.App", "LinqHomework.App\LinqHomework.App.csproj", "{744E0DFB-9E62-488A-8F9D-FB4D4DB2B7AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqHomework.Data", "LinqHomework.Data\LinqHomework.Data.csproj", "{55921C62-EBD2-4113-BA1A-FF8DB4F771A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{744E0DFB-9E62-488A-8F9D-FB4D4DB2B7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{744E0DFB-9E62-488A-8F9D-FB4D4DB2B7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{744E0DFB-9E62-488A-8F9D-FB4D4DB2B7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{744E0DFB-9E62-488A-8F9D-FB4D4DB2B7AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55921C62-EBD2-4113-BA1A-FF8DB4F771A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55921C62-EBD2-4113-BA1A-FF8DB4F771A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55921C62-EBD2-4113-BA1A-FF8DB4F771A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55921C62-EBD2-4113-BA1A-FF8DB4F771A3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {97018BA3-BB07-4E47-9E44-4B0767DE1DE3}
+	EndGlobalSection
+EndGlobal
