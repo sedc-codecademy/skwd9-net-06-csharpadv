@@ -114,7 +114,7 @@ namespace AdvancedLINQ
             List<Student> sordetStudents = SEDC.Students.OrderBy(x => x.FirstName).ToList();
             List<Student> sordetStudentsDesc = SEDC.Students.OrderByDescending(x => x.FirstName).ToList();
 
-            List<Student> sordetStudentsThen = SEDC.Students.OrderBy(x => x.FirstName).ThenBy(x => x.Age).ThenBy(x => x.Id).ToList();
+            List<Student> sordetStudentsThen = SEDC.Students.OrderBy(x => x.Age).ThenByDescending(x => x.Age).ThenBy(x => x.Id).ToList();
         }
 
         public static void SQLLikeExamples() 
