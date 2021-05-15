@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.AnonymousFunctions", "SEDC.AnonymousFunctions\SEDC.AnonymousFunctions.csproj", "{9FB4E311-2DFB-4580-985A-98C0E69015B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.AdvancedLINQ", "SEDC.AdvancedLINQ\SEDC.AdvancedLINQ.csproj", "{56A8C5ED-71A9-4389-8B24-13A4D825A855}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FB4E311-2DFB-4580-985A-98C0E69015B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB4E311-2DFB-4580-985A-98C0E69015B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB4E311-2DFB-4580-985A-98C0E69015B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB4E311-2DFB-4580-985A-98C0E69015B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A8C5ED-71A9-4389-8B24-13A4D825A855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A8C5ED-71A9-4389-8B24-13A4D825A855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A8C5ED-71A9-4389-8B24-13A4D825A855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A8C5ED-71A9-4389-8B24-13A4D825A855}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {35028C6C-2869-4935-A5D8-80203654DF39}
+	EndGlobalSection
+EndGlobal
