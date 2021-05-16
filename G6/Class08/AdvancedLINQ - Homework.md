@@ -2,7 +2,7 @@
 It's time to practice some advanced LINQ queries and improve your skills. You can find all the models and lists that you need in order to practice LINQ at the end of this readme file. 
 
 Try to accomplish the following queries by using LINQ  
-* Find and print all persons firstnames starting with 'R', ordered by Age - DESCENDING ORDER  
+* Find and print all persons first names starting with 'R', ordered by Age - DESCENDING ORDER  
 * Find and print all brown dogs names and ages older than 3 years, ordered by Age - ASCENDING ORDER  
 * Find and print all persons with more than 2 dogs, ordered by Name - DESCENDING ORDER  
 * Find and print all Freddy`s dogs names older than 1 year  
