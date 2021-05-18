@@ -1,4 +1,5 @@
 ﻿using SEDC.CSharpAdv.VideoRental.Data.Database;
+using SEDC.CSharpAdv.VideoRental.Data.Enumerations;
 using SEDC.CSharpAdv.VideoRental.Data.Models;
 using SEDC.CSharpAdv.VideoRental.Services.Helpers;
 using SEDC.CSharpAdv.VideoRental.Services.Interfaces;
