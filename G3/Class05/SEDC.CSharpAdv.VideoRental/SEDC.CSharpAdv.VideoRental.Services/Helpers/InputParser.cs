@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEDC.CSharpAdv.VideoRental.Data.Enumerations;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,6 +9,28 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Helpers
     {
         private static List<string> _validConfirmInputs = new List<string> { "Y", "y", "Yes", "1", "True" };
         private static List<string> _validDeclineInputs = new List<string> { "N", "n", "No", "0", "False" };
+
+        public static Genre ToGenre()
+        {
+            while (true)
+            {
+                int counter = 0;
+                foreach (var item in Enum.GetNames(typeof(Genre)))
+                {
+                    Console.WriteLine($"{counter + 1}. {item}");
+                    counter++;
+                }
+                var genreSelection = ToInteger(1, Enum.GetNames(typeof(Genre)).Length);
+                var isValid = Enum.TryParse(typeof(Genre), (genreSelection - 1).ToString(), out var genre);
+
+                if(isValid)
+                {
+                    return (Genre)genre;
+                }
+
+                Console.WriteLine("Please enter valid input");
+            }
+        }
 
         public static DateTime ToDateTime()
         {

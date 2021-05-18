@@ -14,7 +14,9 @@ namespace SEDC.CSharpAdv.VideoRental.App
             User user = null;
 
             IUserService userService = new UserService();
+            IMovieService movieService = new MovieService();
 
+            #region Login/SignUp
             Screen.HomeScreen();
             bool isLoggedIn = false;
             while (!isLoggedIn)
@@ -25,11 +27,44 @@ namespace SEDC.CSharpAdv.VideoRental.App
                 {
                     case 1:
                         user = userService.Login();
+                        if(user != null)
+                        {
+                            isLoggedIn = true;
+                        }
                         break;
                     case 2:
                         user = userService.SignUp();
+                        if (user != null)
+                        {
+                            isLoggedIn = true;
+                        }
                         break;
                     case 3:
+                        Environment.Exit(0);
+                        break;
+                }
+            }
+            #endregion
+
+            while (true)
+            {
+                Screen.ClearScreen();
+                Screen.MainMenu(user.FullName);
+
+                var selection = InputParser.ToInteger(1, 4);
+                switch (selection)
+                {
+                    case 1:
+                        movieService.ViewMovieList(user);
+                        break;
+                    case 2:
+                        //TODO:
+                        break;
+                    case 3:
+                        //TODO:
+                        break;
+                    case 4:
+                    default:
                         Environment.Exit(0);
                         break;
                 }

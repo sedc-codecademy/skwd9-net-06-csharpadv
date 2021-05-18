@@ -64,11 +64,5 @@ namespace SEDC.CSharpAdv.VideoRental.Data.Database
         {
             return Db.Where(filter).ToList();
         }
-
-        public List<T> Order(bool isAscending)
-        {
-            //
-            return Db;
-        }
     }
 }
