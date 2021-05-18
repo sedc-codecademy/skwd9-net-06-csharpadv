@@ -11,7 +11,6 @@ namespace SEDC.TryBeingFit.Domain.Core.Entities.User
     {
         public int YearsOfExperience { get; set; }
         
-
         public TrainerUser()
         {
             Role = UserRole.Trainer;       
