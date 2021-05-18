@@ -39,7 +39,7 @@ namespace SEDC.TryBeingFit.Domain.Db.Classes
         public void RemoveById(int id)
         {
             T item = GetById(id);
-            if (item != null) Db.Remove(item); 
+            if (item != null) Db.Remove(item);
         }
 
         public void Update(T entity)
