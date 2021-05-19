@@ -6,6 +6,7 @@ namespace SEDC.TryBeingFit.App
     {
         static void Main(string[] args)
         {
+
         }
     }
 }

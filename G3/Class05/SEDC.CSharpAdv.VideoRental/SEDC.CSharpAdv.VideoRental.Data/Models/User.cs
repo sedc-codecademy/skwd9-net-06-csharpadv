@@ -11,5 +11,14 @@ namespace SEDC.CSharpAdv.VideoRental.Data.Models
         public DateTime DateOfBirth { get; set; }
         public bool IsSubscriptionExpired { get; set; }
         public DateTime SubscriptionExpireTime { get; set; }
+
+        // custom geter
+        public int Age 
+        { 
+            get
+            {
+                return DateTime.Now.Year - DateOfBirth.Year;
+            } 
+        }
     }
 }
