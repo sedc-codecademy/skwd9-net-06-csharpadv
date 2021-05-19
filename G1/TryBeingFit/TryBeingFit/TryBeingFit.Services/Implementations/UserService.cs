@@ -12,27 +12,27 @@ namespace TryBeingFit.Services.Implementations
 {
     public class UserService<T> : IUserService<T> where T : User
     {
-        private List<User> _table;
+        private IDbTable<T> _table;
 
         public UserService()
         {
-            if (typeof(T) is StandardUser)
+            if (typeof(T) == typeof(StandardUser))
             {
-                _table = LocalDatabase.StandardUsers.GetAll().Select(x => (User)x).ToList();
+                _table = (IDbTable<T>) LocalDatabase.StandardUsers;
             }
-            if (typeof(T) is PremiumUser)
+            if (typeof(T) == typeof(PremiumUser))
             {
-                _table = LocalDatabase.PremiumUsers.GetAll().Select(x => (User)x).ToList();
+                _table = (IDbTable<T>) LocalDatabase.PremiumUsers;
             }
-            if (typeof(T) is TrainerUser)
+            if (typeof(T) == typeof(TrainerUser))
             {
-                _table = LocalDatabase.TrainerUsers.GetAll().Select(x => (User)x).ToList();
+                _table = (IDbTable<T>) LocalDatabase.TrainerUsers;
             }
         }
 
-        public User Login(string username, string password)
+        public T Login(string username, string password)
         {
-            User user = _table.FirstOrDefault(x => x.Username == username && x.CheckPassword(password));
+            T user = _table.GetAll().FirstOrDefault(x => x.Username == username && x.CheckPassword(password));
 
             if (user == null)
             {
@@ -42,7 +42,7 @@ namespace TryBeingFit.Services.Implementations
             return user;
         }
 
-        public User Register(User user)
+        public T Register(T user)
         {
             if (!ValidationHelper.ValidName(user.FirstName) ||
                 !ValidationHelper.ValidName(user.LastName) ||
@@ -52,13 +52,13 @@ namespace TryBeingFit.Services.Implementations
             }
 
 
-            _table.Add(user);
+            _table.Insert(user);
             return user;
         }
 
         public void ChangePassword(int userId, string oldPassword, string newPassword)
         {
-            User user = _table.FirstOrDefault(x => x.Id == userId);
+            User user = _table.GetAll().FirstOrDefault(x => x.Id == userId);
 
             if (user == null)
             {
@@ -80,7 +80,7 @@ namespace TryBeingFit.Services.Implementations
 
         public void ChangeInfo(int userId, string firstName, string lastName)
         {
-            User user = _table.FirstOrDefault(x => x.Id == userId);
+            User user = _table.GetAll().FirstOrDefault(x => x.Id == userId);
 
             if (user == null)
             {
