@@ -21,7 +21,8 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
 
         public T Login(string username, string password)
         {
-            T user = Database.GetAll().SingleOrDefault(user => user.Username == username && user.Password == password);
+            List<T> users = Database.GetAll();
+            T user = users.SingleOrDefault(user => user.Username == username && user.Password == password);
 
             if (user == null) 
             {
@@ -35,17 +36,62 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
 
         public T Register(T user)
         {
-            throw new NotImplementedException();
+            if (ValidationHelper.ValidateString(user.FirstName) == null
+                || ValidationHelper.ValidateString(user.LastName) == null
+                || ValidationHelper.ValidateUsername(user.Username) == null
+                || ValidationHelper.ValidatePassword(user.Password) == null) 
+            {
+                MessageHelper.Color("[Error] Invalid info!", ConsoleColor.Red);
+                Console.ReadLine();
+                return null;
+            }
+
+            int id = Database.Insert(user);
+            return Database.GetById(id);
         }
 
-        public void ChangePassword(int id, int oldPassword, int newPassword)
+        public void ChangePassword(int id, string oldPassword, string newPassword)
         {
-            throw new NotImplementedException();
+            T user = Database.GetById(id);
+
+            if (newPassword == oldPassword) 
+            {
+                MessageHelper.Color("[Error] You can not use the same password!", ConsoleColor.Red);
+                Console.ReadLine();
+                return;
+            }
+
+            if (ValidationHelper.ValidatePassword(newPassword) == null) 
+            {
+                MessageHelper.Color("[Error] New password is not valid!", ConsoleColor.Red);
+                Console.ReadLine();
+                return;
+            }
+
+            user.Password = newPassword;
+            Database.Update(user);
+
+            MessageHelper.Color("Password successfully changed!", ConsoleColor.Green);
+            Console.ReadLine();
         }
 
         public void ChangeInfo(int id, string firstName, string lastName)
         {
-            throw new NotImplementedException();
+            T user = Database.GetById(id);
+
+            if (ValidationHelper.ValidateString(firstName) == null || ValidationHelper.ValidateString(lastName) == null) 
+            {
+                MessageHelper.Color("[Error] Strings are not valid", ConsoleColor.Red);
+                Console.ReadLine();
+                return;
+            }
+
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            Database.Update(user);
+
+            MessageHelper.Color("Data successfully changed!", ConsoleColor.Green);
+            Console.ReadLine();
         }
 
         public bool IsDbEmpty()
