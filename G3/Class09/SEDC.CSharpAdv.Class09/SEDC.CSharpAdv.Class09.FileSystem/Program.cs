@@ -73,12 +73,35 @@ namespace SEDC.CSharpAdv.Class09.FileSystem
             bool testTxt2FileExists = File.Exists(currentFileFolderPath + "test2.txt");
             //Console.WriteLine($"Does {fileName} exists: {testTxtFileExists}");
             //Console.WriteLine($"Does test2.txt exists: {testTxt2FileExists}");
-
+            
+            // Create file
             string studentsFileName = "students.txt";
             if(!File.Exists(currentFileFolderPath + studentsFileName))
             {
                 File.Create(currentFileFolderPath + studentsFileName).Close();
                 Console.WriteLine($"A file {studentsFileName} has been created");
+            }
+
+            // Delete file
+            //if(File.Exists(currentFileFolderPath + studentsFileName))
+            //{
+            //    File.Delete(currentFileFolderPath + studentsFileName);
+            //    Console.WriteLine($"File {studentsFileName} was deleted");
+            //}
+
+            // Writing in file
+            string studentName = "Student Student1";
+            if(File.Exists(currentFileFolderPath + studentsFileName))
+            {
+                File.WriteAllText(currentFileFolderPath + studentsFileName, studentName);
+                Console.WriteLine("Successfuly written in file");
+            }
+
+            if (File.Exists(currentFileFolderPath + studentsFileName))
+            {
+                File.AppendAllText(currentFileFolderPath + studentsFileName, "Nikola Dalchevski");
+                File.AppendAllText(currentFileFolderPath + studentsFileName, "Trajan Stevkovski");
+                Console.WriteLine("Successfuly written in file");
             }
 
             Console.ReadLine();
