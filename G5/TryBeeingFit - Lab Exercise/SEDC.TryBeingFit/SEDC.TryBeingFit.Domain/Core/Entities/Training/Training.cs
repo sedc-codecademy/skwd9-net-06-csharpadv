@@ -12,7 +12,7 @@ namespace SEDC.TryBeingFit.Domain.Core.Entities.Training
         public string Description { get; set; }
         public int Time { get; set; }
         public Difficulty Difficulty { get; set; }
-        public int Raiting { get; set; }
+        public int Rating { get; set; }
 
         public string CheckRaiting()
         {
