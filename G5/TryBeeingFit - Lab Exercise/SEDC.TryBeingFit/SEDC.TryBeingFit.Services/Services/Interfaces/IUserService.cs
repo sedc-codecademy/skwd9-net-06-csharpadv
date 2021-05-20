@@ -9,7 +9,7 @@ namespace SEDC.TryBeingFit.Services.Services.Interfaces
     {
         T Login(string username, string password);
         T Register(T user);
-        void ChangePassword(int id, int oldPassword, int newPassword);
+        void ChangePassword(int id, string oldPassword, string newPassword);
         void ChangeInfo(int id, string firstName, string lastName);
         bool IsDbEmpty();
     }

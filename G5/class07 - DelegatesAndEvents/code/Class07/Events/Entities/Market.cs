@@ -7,7 +7,6 @@ namespace Events.Entities
 {
     // This is a publisher class
 
-    // This is a publisher class
     // This class sends messages to all objects that subscribe for getting such messages
     // In our case, its a Market and it sends promotion materials to anyone that subscried for those
     // Users can also unsubscribe so they wont get any promotions in the future
@@ -16,7 +15,7 @@ namespace Events.Entities
     public class Market
     {
         // 1. Define a delegate
-        // 2. Define a delegeate based on that delegate
+        // 2. Define a event based on that delegeate
         // 3. Trigger the even
 
         // Delegates are like a type of method that is allowed to be subscribed for some event 
