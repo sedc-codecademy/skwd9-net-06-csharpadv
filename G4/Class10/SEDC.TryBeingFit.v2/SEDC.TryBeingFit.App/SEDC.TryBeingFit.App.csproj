@@ -6,8 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TryBeingFit.Domain\TryBeingFit.Domain.csproj" />
-    <ProjectReference Include="..\TryBeingFit.Services\TryBeingFit.Services.csproj" />
+    <ProjectReference Include="..\SEDC.TryBeingFit.Services\SEDC.TryBeingFit.Services.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using TryBeingFit.App.Helper;
 
 namespace TryBeingFit.App
 {
@@ -6,7 +6,7 @@ namespace TryBeingFit.App
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Seeder.Seed();
         }
     }
 }
