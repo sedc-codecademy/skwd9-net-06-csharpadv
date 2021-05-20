@@ -11,7 +11,7 @@ namespace SEDC.TryBeingFit.Domain.Core.Interfaces.Training
         string Description { get; set; }
         int Time { get; set; }
         Difficulty Difficulty { get; set; }
-        int Raiting { get; set; }
+        int Rating { get; set; }
         string CheckRaiting();
     }
 }

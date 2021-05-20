@@ -7,10 +7,10 @@ using SEDC.TryBeingFit.Domain.Core.Interfaces.User;
 
 namespace SEDC.TryBeingFit.Domain.Core.Entities.User
 {
-    public class StandarUser : User, IStandardUser
+    public class StandardUser : User, IStandardUser
     {
         public List<VideoTraining> VideoTrainings { get; set; }
-        public StandarUser()
+        public StandardUser()
         {
             Role = UserRole.Standard;
         }
