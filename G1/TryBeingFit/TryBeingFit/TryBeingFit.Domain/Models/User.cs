@@ -68,5 +68,20 @@ namespace TryBeingFit.Domain.Models
         {
             return $"{FullName} ({Username}) [{Role}]";
         }
+
+        public bool CheckPassword(string password)
+        {
+            return Password == password;
+        }
+
+        public void ChangePassword(string password)
+        {
+            if (!ValidationHelper.ValidPassword(password))
+            {
+                throw new Exception("Password does not met the requirements");
+            }
+
+            Password = password;
+        }
     }
 }

@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SEDC.TryBeingFit.Domain\SEDC.TryBeingFit.Domain.csproj" />
-  </ItemGroup>
-
 </Project>
