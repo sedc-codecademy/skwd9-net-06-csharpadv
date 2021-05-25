@@ -10,6 +10,7 @@ namespace SEDC.TryBeingFit.Services.Helpers
         {
             bool isNumber = int.TryParse(number, out int num);
             if (!isNumber) return -1;
+            // chekc the validation (range - 1)
             if (num <= 0 || num > range) return -1;
             return num;
         }
