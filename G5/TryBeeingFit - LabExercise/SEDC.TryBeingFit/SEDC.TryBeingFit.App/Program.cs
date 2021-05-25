@@ -9,6 +9,8 @@ namespace SEDC.TryBeingFit.App
 {
     class Program
     {
+        public static IUIService _uiService = new UIService();
+
         public static IUserService<StandardUser> _standardUserService = new UserService<StandardUser>();
         public static IUserService<PremiumUser> _premiumUserService = new UserService<PremiumUser>();
         public static IUserService<TrainerUser> _trainerUserService = new UserService<TrainerUser>();
@@ -38,7 +40,66 @@ namespace SEDC.TryBeingFit.App
         {
             Seed();
 
-            while (true) { }
+            while (true) 
+            {
+                if (_currentUser == null) 
+                {
+                    int loginChoice = _uiService.LogInMenu();
+
+                    //login
+                    if (loginChoice == 1) 
+                    {
+                        int roleChoice = _uiService.RoleMenu();
+                        UserRole role = (UserRole)roleChoice;
+                        Console.Clear();
+
+                        Console.WriteLine("Enter Username:");
+                        string username = Console.ReadLine();
+                        Console.WriteLine("Enter Password:");
+                        string password = Console.ReadLine();
+
+                        switch (role)
+                        {
+                            case UserRole.Standard:
+                                _currentUser = _standardUserService.Login(username, password);
+                                break;
+                            case UserRole.Premium:
+                                _currentUser = _premiumUserService.Login(username, password);
+                                break;
+                            case UserRole.Trainer:
+                                _currentUser = _trainerUserService.Login(username, password);
+                                break;        
+                        }
+
+                        if (_currentUser == null) continue;
+                    }
+
+                    //register
+                    if (loginChoice == 2) 
+                    {
+                        StandardUser newUser = new StandardUser();
+
+                        Console.WriteLine("Enter First Name:");
+                        newUser.FirstName = Console.ReadLine();
+                        Console.WriteLine("Enter Last Name:");
+                        newUser.LastName = Console.ReadLine();
+                        Console.WriteLine("Enter Username:");
+                        newUser.Username = Console.ReadLine();
+                        Console.WriteLine("Enter Password:");
+                        newUser.Password = Console.ReadLine();
+
+                        if (_currentUser == null) 
+                        {
+                            User user = _standardUserService.Register(newUser);
+                            if (user == null) continue;
+                            _currentUser = user;
+                        }
+                    }
+
+                    _uiService.Welcome(_currentUser);
+
+                } 
+            }
         }
 
 
