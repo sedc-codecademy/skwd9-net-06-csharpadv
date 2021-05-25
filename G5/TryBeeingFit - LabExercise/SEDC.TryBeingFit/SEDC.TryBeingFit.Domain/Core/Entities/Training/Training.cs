@@ -16,9 +16,9 @@ namespace SEDC.TryBeingFit.Domain.Core.Entities.Training
 
         public string CheckRaiting()
         {
-            if (Raiting == 1) return "Bad";
-            if (Raiting < 3) return "Okey";
-            if (Raiting > 3) return "Good";
+            if (Rating == 1) return "Bad";
+            if (Rating < 3) return "Okey";
+            if (Rating > 3) return "Good";
             return "Unknown";
         }
     }
