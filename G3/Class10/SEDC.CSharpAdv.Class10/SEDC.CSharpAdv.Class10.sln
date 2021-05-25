@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class10.Garb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class10.Disposing", "SEDC.CSharpAdv.Class10.Disposing\SEDC.CSharpAdv.Class10.Disposing.csproj", "{070C2FE6-84AE-46E2-A304-6FCD59E057FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class10.Nullable", "SEDC.CSharpAdv.Class10.Nullable\SEDC.CSharpAdv.Class10.Nullable.csproj", "{BB8EC466-6CB4-4F2B-88E0-30445FB0753C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class10.OptionalNamedParameters", "SEDC.CSharpAdv.Class10.OptionalNamedParameters\SEDC.CSharpAdv.Class10.OptionalNamedParameters.csproj", "{02AC1D90-BFB6-4394-93C7-6F88B2150ADB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{070C2FE6-84AE-46E2-A304-6FCD59E057FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{070C2FE6-84AE-46E2-A304-6FCD59E057FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{070C2FE6-84AE-46E2-A304-6FCD59E057FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB8EC466-6CB4-4F2B-88E0-30445FB0753C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB8EC466-6CB4-4F2B-88E0-30445FB0753C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB8EC466-6CB4-4F2B-88E0-30445FB0753C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB8EC466-6CB4-4F2B-88E0-30445FB0753C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02AC1D90-BFB6-4394-93C7-6F88B2150ADB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02AC1D90-BFB6-4394-93C7-6F88B2150ADB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02AC1D90-BFB6-4394-93C7-6F88B2150ADB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02AC1D90-BFB6-4394-93C7-6F88B2150ADB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
