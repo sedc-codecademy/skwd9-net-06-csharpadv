@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SDEC.CSharpAdv.Class09.FileStreams.Logger;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -8,6 +9,8 @@ namespace SDEC.CSharpAdv.Class09.FileStreams
     {
         static void Main(string[] args)
         {
+            //LoggerTest();
+            //Console.ReadLine();
             string currentDirectory = Directory.GetCurrentDirectory();
             string folderPath = currentDirectory + @"/files/";
             string fileName = "test.txt";
@@ -57,9 +60,37 @@ namespace SDEC.CSharpAdv.Class09.FileStreams
                 }
             }
 
+            StreamReader streamReader = new StreamReader(folderPath + fileName);
+            string firstLine = streamReader.ReadLine();
+            Console.WriteLine(firstLine);
+            streamReader.Close();
 
+            using (StreamReader sr = new StreamReader(folderPath + fileName))
+            {
+                string firstLine1 = sr.ReadLine();
+                string secondLine = sr.ReadLine();
+                string thirdLine = sr.ReadLine();
+                string rest = sr.ReadToEnd();
+
+                Console.WriteLine($"First line: {firstLine1}");
+                Console.WriteLine($"Second line: {secondLine}");
+                Console.WriteLine($"Third line: {thirdLine}");
+                Console.WriteLine($"Rest: {rest}");
+            }
+
+            // result for exercise 2 + 3 = 5 - 05 / 20 / 2021 20:09:23
 
             Console.ReadLine();
+        }
+
+
+        public static void LoggerTest()
+        {
+            ILogerService loger = new LoggerService();
+
+            loger.LogUsage("trajan", false);
+            loger.LogError("failed to load database", "connection failed", "trajan");
+            loger.LogUsage("trajan", true);
         }
     }
 }
