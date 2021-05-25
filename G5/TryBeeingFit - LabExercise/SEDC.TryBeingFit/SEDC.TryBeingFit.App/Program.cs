@@ -42,6 +42,7 @@ namespace SEDC.TryBeingFit.App
 
             while (true) 
             {
+                //login/register
                 if (_currentUser == null) 
                 {
                     int loginChoice = _uiService.LogInMenu();
@@ -97,8 +98,69 @@ namespace SEDC.TryBeingFit.App
                     }
 
                     _uiService.Welcome(_currentUser);
+                }
 
-                } 
+                //main menu
+                int mainMenuChoice = _uiService.MainMenu(_currentUser.Role);
+                string mainMenuItem = _uiService.MainMenuItems[mainMenuChoice - 1];
+
+                switch (mainMenuItem)
+                {
+                    case "Train":
+
+                        //int trainChoice;
+
+                        //if (_currentUser.Role == UserRole.Premium)
+                        //{
+                        //    trainChoice = _uiService.TrainMenu();
+                        //}
+                        //else 
+                        //{
+                        //    trainChoice = 1;
+                        //}
+
+                        int trainChoice = _currentUser.Role == UserRole.Premium ? _uiService.TrainMenu() : 1;
+
+                        //video training
+                        if (trainChoice == 1) 
+                        {
+                            int trainingItem = _uiService.TrainMenuItems(_videoTrainingService.GetTrainings());
+                            VideoTraining training = _videoTrainingService.GetTrainingByIndex(trainingItem - 1);
+                            Console.WriteLine(training.Title);
+                            Console.WriteLine($"Link: {training.Link}");
+                            Console.WriteLine($"Raiting: {training.Rating}");
+                            Console.WriteLine($"Time: {training.Time} minutes");
+                            Console.ReadLine();
+                        }
+
+                        //live training
+                        if (trainChoice == 2) 
+                        {
+                            int trainingItem = _uiService.TrainMenuItems(_liveTrainingService.GetTrainings());
+                            LiveTraining training = _liveTrainingService.GetTrainingByIndex(trainingItem - 1);
+                            Console.WriteLine(training.Title);
+                            Console.WriteLine($"The training starts at: {training.NextSession}");
+                            Console.WriteLine($"Raiting: {training.Rating}");
+                            Console.WriteLine($"Time: {training.Time} minutes");
+                            Console.ReadLine();
+                        }
+
+                        break;
+                    case "Upgrade to premium":
+                        _uiService.UpgradeToPremium();
+                        break;
+                    case "Reschedule training":
+
+                        break;
+                    case "Account":
+
+                        break;
+                    case "Log Out":
+                        _currentUser = null;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
