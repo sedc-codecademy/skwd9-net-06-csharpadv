@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class10.GarbageCollector", "SEDC.CSharpAdv.Class10.GarbageCollector\SEDC.CSharpAdv.Class10.GarbageCollector.csproj", "{D91A9240-1F4F-4D29-8C67-C81CA8B65287}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class10.Disposing", "SEDC.CSharpAdv.Class10.Disposing\SEDC.CSharpAdv.Class10.Disposing.csproj", "{070C2FE6-84AE-46E2-A304-6FCD59E057FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D91A9240-1F4F-4D29-8C67-C81CA8B65287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91A9240-1F4F-4D29-8C67-C81CA8B65287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91A9240-1F4F-4D29-8C67-C81CA8B65287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91A9240-1F4F-4D29-8C67-C81CA8B65287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{070C2FE6-84AE-46E2-A304-6FCD59E057FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{070C2FE6-84AE-46E2-A304-6FCD59E057FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{070C2FE6-84AE-46E2-A304-6FCD59E057FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{070C2FE6-84AE-46E2-A304-6FCD59E057FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0391C4DD-9FE1-4729-B75A-6A0784B86850}
+	EndGlobalSection
+EndGlobal
