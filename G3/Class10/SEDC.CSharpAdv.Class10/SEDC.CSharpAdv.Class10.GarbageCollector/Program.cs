@@ -7,7 +7,7 @@ namespace SEDC.CSharpAdv.Class10.GarbageCollector
     {
         static void Main(string[] args)
         {
-            var data = Enumerable.Repeat("abcdefg", 80000);
+            var data = Enumerable.Repeat("abcdefg", 1000);
             string str = string.Empty;
 
             foreach (var word in data)

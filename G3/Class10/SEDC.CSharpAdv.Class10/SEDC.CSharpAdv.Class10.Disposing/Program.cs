@@ -79,12 +79,128 @@ namespace SEDC.CSharpAdv.Class10.Disposing
         }
         #endregion
 
+        #region Dispose with Using block
+
+        public static void AppendTextInFileSafe(string text, string path)
+        {
+            using (StreamWriter sw = new StreamWriter(path, true))
+            {
+                if(text == "break")
+                {
+                    throw new Exception("Something broke...");
+                }
+                sw.WriteLine(text);
+            }
+        }
+
+        public static void ReadTextFromFileSafe(string path)
+        {
+            using (StreamReader sr = new StreamReader(path))
+            {
+                Console.WriteLine(sr.ReadToEnd());
+            }
+        }
+
+        public static void UsingExample()
+        {
+            try
+            {
+                Console.WriteLine("Exnter text pt1:");
+                string text1 = Console.ReadLine();
+                AppendTextInFileSafe(text1, FilePath);
+
+                Console.WriteLine("Exnter text pt2:");
+                string text2 = Console.ReadLine();
+                AppendTextInFileSafe(text2, FilePath);
+
+                Console.WriteLine("Exnter text pt3:");
+                string text3 = Console.ReadLine();
+                AppendTextInFileSafe(text3, FilePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was a problem with the writing system");
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                Console.WriteLine("==========READING==========");
+                Console.ReadLine();
+                ReadTextFromFileSafe(FilePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was a problem with the reading system");
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Dispose with our own class
+
+        public static void AppendTextInFileOurImplementation(string text, string path)
+        {
+            using (OurWriter ow = new OurWriter(path))
+            {
+                ow.Write(text);
+            }
+        }
+
+        public static void ReadTextFromFileOurImplementation(string path)
+        {
+            using (OurReader or = new OurReader(path))
+            {
+                Console.WriteLine(or.Read());
+            }
+        }
+
+        public static void OurDisposableExample()
+        {
+            try
+            {
+                Console.WriteLine("Exnter text pt1:");
+                string text1 = Console.ReadLine();
+                AppendTextInFileOurImplementation(text1, FilePath);
+
+                Console.WriteLine("Exnter text pt2:");
+                string text2 = Console.ReadLine();
+                AppendTextInFileOurImplementation(text2, FilePath);
+
+                Console.WriteLine("Exnter text pt3:");
+                string text3 = Console.ReadLine();
+                AppendTextInFileOurImplementation(text3, FilePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was a problem with the writing system");
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                Console.WriteLine("==========READING===========");
+                Console.ReadLine();
+                ReadTextFromFileOurImplementation(FilePath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("There was a problem with the reading system");
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        #endregion
+
         static void Main(string[] args)
         {
             CreateFolder(AppPath);
             CreateFile(FilePath);
 
-            ManualExample();
+            //ManualExample();
+            //UsingExample();
+            OurDisposableExample();
 
             Console.ReadLine();
         }
