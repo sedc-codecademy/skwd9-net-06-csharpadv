@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.FileSystem", "SEDC.FileSystem\SEDC.FileSystem.csproj", "{7017887A-6E45-4F2C-A4A6-F71ED2884BFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.FileSystem.ReadAndWrite", "SEDC.FileSystem\SEDC.FileSystem.ReadAndWrite.csproj", "{7017887A-6E45-4F2C-A4A6-F71ED2884BFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.FileSystem.StreamReadWrite", "SEDC.FileSystem.StreamReadWrite\SEDC.FileSystem.StreamReadWrite.csproj", "{4F0000D3-4D11-4F5A-A69A-4033BD64DF51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7017887A-6E45-4F2C-A4A6-F71ED2884BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7017887A-6E45-4F2C-A4A6-F71ED2884BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7017887A-6E45-4F2C-A4A6-F71ED2884BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F0000D3-4D11-4F5A-A69A-4033BD64DF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0000D3-4D11-4F5A-A69A-4033BD64DF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0000D3-4D11-4F5A-A69A-4033BD64DF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0000D3-4D11-4F5A-A69A-4033BD64DF51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

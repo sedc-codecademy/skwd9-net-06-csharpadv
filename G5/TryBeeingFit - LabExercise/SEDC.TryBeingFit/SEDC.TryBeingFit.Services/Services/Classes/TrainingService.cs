@@ -32,6 +32,11 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
             Database.Insert(training);
         }
 
+        public T GetTrainingByIndex(int index) 
+        {
+            return Database.GetAll()[index];
+        }
+
 
     }
 }

@@ -10,5 +10,6 @@ namespace SEDC.TryBeingFit.Services.Services.Interfaces
         List<T> GetTrainings();
         T GetSingleTraining(int id);
         void AddTraining(T training);
+        T GetTrainingByIndex(int index);
     }
 }
