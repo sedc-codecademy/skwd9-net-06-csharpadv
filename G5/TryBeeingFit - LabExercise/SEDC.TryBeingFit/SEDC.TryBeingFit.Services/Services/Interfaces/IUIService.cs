@@ -1,4 +1,5 @@
-﻿using SEDC.TryBeingFit.Domain.Core.Entities.Training;
+﻿using SEDC.TryBeingFit.Domain.Core.Entities;
+using SEDC.TryBeingFit.Domain.Core.Entities.Training;
 using SEDC.TryBeingFit.Domain.Core.Entities.User;
 using SEDC.TryBeingFit.Domain.Core.Enum;
 using System;
@@ -15,8 +16,10 @@ namespace SEDC.TryBeingFit.Services.Services.Interfaces
         int LogInMenu();
         int RoleMenu();
         int TrainMenu();
+        int AccountMenu();
         int TrainMenuItems<T>(List<T> trainings) where T : Training;
         int ChooseMenu<T>(List<T> items);
+        int ChooseEntitiesMenu<T>(List<T> entites) where T : BaseEntity;
         void UpgradeToPremium();
     }
 }

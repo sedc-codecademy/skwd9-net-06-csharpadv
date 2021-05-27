@@ -14,6 +14,7 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
     public class UIService : IUIService
     {
         public List<string> MainMenuItems { get; set; }
+        public List<string> AccountMenuItems { get; set; }
 
         public void Welcome(User user)
         {
@@ -79,6 +80,14 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
             return ChooseMenu(menuItems);
         }
 
+        public int AccountMenu() 
+        {
+            Console.Clear();
+            Console.WriteLine("Please choose one of the following Account options:");
+            AccountMenuItems = new List<string>() { "Change Info", "Check Subscription", "Change Password" };
+            return ChooseMenu(AccountMenuItems);
+        }
+
         public int TrainMenuItems<T>(List<T> trainings) where T : Training
         {
             Console.Clear();
@@ -113,6 +122,14 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
 
         public void UpgradeToPremium()
         {
+            //suggestion for implementing real UpgradeToPremium functionality
+
+            // logut 
+            // keep the currently logged user in a variable
+            // find and delete that user from standardUserService
+            // regsiter new premium user in the premiumUserService with the same data
+            // log in the newly registered user
+
             Console.Clear();
             Console.WriteLine("Upgrade to premium to get these features:");
             Console.WriteLine("* Live trainings");
