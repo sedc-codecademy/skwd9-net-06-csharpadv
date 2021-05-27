@@ -1,0 +1,4 @@
+﻿Welcome to SEDC!
+There are couple of courses:
+C#
+Advance C#
