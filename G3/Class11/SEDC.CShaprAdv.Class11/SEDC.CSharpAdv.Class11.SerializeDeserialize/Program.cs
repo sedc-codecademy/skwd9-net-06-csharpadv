@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 
 namespace SEDC.CSharpAdv.Class11.SerializeDeserialize
@@ -13,6 +14,7 @@ namespace SEDC.CSharpAdv.Class11.SerializeDeserialize
 
         static void Main(string[] args)
         {
+            #region Custom serializer deserializer
             if (!Directory.Exists(directoryPath))
             {
                 Directory.CreateDirectory(directoryPath);
@@ -55,6 +57,26 @@ namespace SEDC.CSharpAdv.Class11.SerializeDeserialize
             Student student2 = ourJsonSerializer.DeserializeStudent(studentJson);
 
             Console.WriteLine($"{student2.FirstName} {student2.LastName} is {student2.Age} years old, is part time {student2.IsPartTime}");
+
+            #endregion
+
+            Console.WriteLine("====================JSON SERIALIZER====================");
+            string njSerialization = JsonConvert.SerializeObject(bob);
+            Console.WriteLine(njSerialization);
+
+            var a = new
+            {
+                FullName = "Trajan Stevkovski",
+                DateOfBirth = DateTime.Now
+            };
+
+            string njASerialized = JsonConvert.SerializeObject(a);
+            Console.WriteLine(njASerialized);
+
+            Console.WriteLine("====================JSON DESERIALIZER====================");
+
+            Student student3 = JsonConvert.DeserializeObject<Student>(njSerialization);
+            Console.WriteLine($"student3 {student3.FirstName} {student3.LastName} is {student3.Age} years old, is part time {student3.IsPartTime}");
 
 
             Console.ReadLine();
