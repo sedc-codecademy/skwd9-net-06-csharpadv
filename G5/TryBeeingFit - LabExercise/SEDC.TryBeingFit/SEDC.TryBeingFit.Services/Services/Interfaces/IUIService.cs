@@ -20,6 +20,5 @@ namespace SEDC.TryBeingFit.Services.Services.Interfaces
         int TrainMenuItems<T>(List<T> trainings) where T : Training;
         int ChooseMenu<T>(List<T> items);
         int ChooseEntitiesMenu<T>(List<T> entites) where T : BaseEntity;
-        void UpgradeToPremium();
     }
 }

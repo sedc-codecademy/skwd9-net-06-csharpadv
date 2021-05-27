@@ -120,24 +120,6 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
             }
         }
 
-        public void UpgradeToPremium()
-        {
-            //suggestion for implementing real UpgradeToPremium functionality
-
-            // logut 
-            // keep the currently logged user in a variable
-            // find and delete that user from standardUserService
-            // regsiter new premium user in the premiumUserService with the same data
-            // log in the newly registered user
-
-            Console.Clear();
-            Console.WriteLine("Upgrade to premium to get these features:");
-            Console.WriteLine("* Live trainings");
-            Console.WriteLine("* Newsletter in your mail");
-            Console.WriteLine("* Discounts at sports equipment stores");
-            Console.ReadLine();
-        }
-
         public int ChooseEntitiesMenu<T>(List<T> entites) where T : BaseEntity 
         {
             Console.Clear();
