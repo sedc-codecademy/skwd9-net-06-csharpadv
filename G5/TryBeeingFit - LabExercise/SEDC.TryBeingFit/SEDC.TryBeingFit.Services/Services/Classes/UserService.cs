@@ -94,6 +94,11 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
             Console.ReadLine();
         }
 
+        public T GetById(int id)
+        {
+            return Database.GetById(id);
+        }
+
         public bool IsDbEmpty()
         {
             return Database.GetAll() == null;
