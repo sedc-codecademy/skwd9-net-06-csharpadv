@@ -11,6 +11,9 @@ namespace SEDC.TryBeingFit.Services.Services.Interfaces
         T Register(T user);
         void ChangePassword(int id, string oldPassword, string newPassword);
         void ChangeInfo(int id, string firstName, string lastName);
+        T GetById(int id);
+        void DeleteById(int id);
+        PremiumUser MapToPremiumUser(User user);
         bool IsDbEmpty();
     }
 }

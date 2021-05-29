@@ -14,6 +14,7 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
     public class UIService : IUIService
     {
         public List<string> MainMenuItems { get; set; }
+        public List<string> AccountMenuItems { get; set; }
 
         public void Welcome(User user)
         {
@@ -79,6 +80,14 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
             return ChooseMenu(menuItems);
         }
 
+        public int AccountMenu() 
+        {
+            Console.Clear();
+            Console.WriteLine("Please choose one of the following Account options:");
+            AccountMenuItems = new List<string>() { "Change Info", "Check Subscription", "Change Password" };
+            return ChooseMenu(AccountMenuItems);
+        }
+
         public int TrainMenuItems<T>(List<T> trainings) where T : Training
         {
             Console.Clear();
@@ -109,16 +118,6 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
 
                 return choice;
             }
-        }
-
-        public void UpgradeToPremium()
-        {
-            Console.Clear();
-            Console.WriteLine("Upgrade to premium to get these features:");
-            Console.WriteLine("* Live trainings");
-            Console.WriteLine("* Newsletter in your mail");
-            Console.WriteLine("* Discounts at sports equipment stores");
-            Console.ReadLine();
         }
 
         public int ChooseEntitiesMenu<T>(List<T> entites) where T : BaseEntity 

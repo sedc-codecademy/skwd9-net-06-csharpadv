@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.ClassDispose.HeapAndStack", "SEDC.ClassDispose.HeapAndStack\SEDC.ClassDispose.HeapAndStack.csproj", "{96371E4F-6932-40EC-A2AC-518A4387A8EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.ClassDispose.Disposing", "SEDC.ClassDispose.Disposing\SEDC.ClassDispose.Disposing.csproj", "{6669258D-CF05-4D8E-A934-92099ECECA7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96371E4F-6932-40EC-A2AC-518A4387A8EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96371E4F-6932-40EC-A2AC-518A4387A8EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96371E4F-6932-40EC-A2AC-518A4387A8EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96371E4F-6932-40EC-A2AC-518A4387A8EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6669258D-CF05-4D8E-A934-92099ECECA7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6669258D-CF05-4D8E-A934-92099ECECA7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6669258D-CF05-4D8E-A934-92099ECECA7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6669258D-CF05-4D8E-A934-92099ECECA7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE3E0F58-1950-418C-AE34-4B06C60EAF47}
+	EndGlobalSection
+EndGlobal

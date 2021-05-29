@@ -1,9 +1,13 @@
 ﻿using SEDC.TryBeingFit.Domain.Core.Entities.Training;
 using SEDC.TryBeingFit.Domain.Core.Entities.User;
 using SEDC.TryBeingFit.Domain.Core.Enum;
+using SEDC.TryBeingFit.Services.Helpers;
 using SEDC.TryBeingFit.Services.Services.Classes;
 using SEDC.TryBeingFit.Services.Services.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 namespace SEDC.TryBeingFit.App
 {
@@ -147,13 +151,108 @@ namespace SEDC.TryBeingFit.App
 
                         break;
                     case "Upgrade to premium":
-                        _uiService.UpgradeToPremium();
+
+                        //suggestion for implementing real UpgradeToPremium functionality
+
+                        // logout 
+                        // keep the currently logged user in a variable
+                        // find and delete that user from standardUserService
+                        // regsiter new premium user in the premiumUserService with the same data
+                        // log in the newly registered user
+
+                        Console.Clear();
+                        Console.WriteLine("Do you really want to upgrade to premium? It will cost you 15$.");
+                        Console.WriteLine("Press enter to upgrade!");
+
+                        Console.ReadLine();
+
+                        User tempCurrentUser = _currentUser;
+                        _currentUser = null;
+                        _standardUserService.DeleteById(tempCurrentUser.Id);
+                        PremiumUser newUser = _premiumUserService.MapToPremiumUser(tempCurrentUser);
+                        User user = _premiumUserService.Register(newUser);
+                        _currentUser = user;
+
+                        Console.WriteLine("Createing new premium sibscription, please wait ....");
+                        Thread.Sleep(2000);
+
+                        Console.WriteLine($"You have succesfully buy a premium subscription. Welcome back {_currentUser.Username}.");
+                        Thread.Sleep(2000);
+
+                        Console.ReadLine();
                         break;
                     case "Reschedule training":
-
+                        List<LiveTraining> trainings = _liveTrainingService.GetTrainings().Where(training => training.Trainer.Id == _currentUser.Id).ToList();
+                        if (trainings.Count == 0)
+                        {
+                            Console.WriteLine("No available trainings.");
+                            Console.ReadLine();
+                        }
+                        else 
+                        {
+                            int trainingChoice = _uiService.ChooseEntitiesMenu(trainings);
+                            Console.WriteLine("How many days fo you want to reschedule the training: ");
+                            int days = ValidationHelper.ValidateNumber(Console.ReadLine(), 10);
+                            _trainerUserService.GetById(_currentUser.Id).ChangeSchedule(trainings[trainingChoice - 1], days);
+                            Console.WriteLine("Schadule changed!");
+                            Console.ReadLine();
+                        }
                         break;
                     case "Account":
+                        int accountChoice = _uiService.AccountMenu();
+                        Console.Clear();
+                        if (accountChoice == 1)
+                        {
+                            //Change Info
+                            Console.WriteLine("Enter First Name:");
+                            string firstName = Console.ReadLine();
+                            Console.WriteLine("Enter Last Name:");
+                            string lastName = Console.ReadLine();
 
+                            switch (_currentUser.Role)
+                            {
+                                case UserRole.Standard:
+                                    _standardUserService.ChangeInfo(_currentUser.Id, firstName, lastName);
+                                    break;
+                                case UserRole.Premium:
+                                    _premiumUserService.ChangeInfo(_currentUser.Id, firstName, lastName);
+                                    break;
+                                case UserRole.Trainer:
+                                    _trainerUserService.ChangeInfo(_currentUser.Id, firstName, lastName);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else if (accountChoice == 2)
+                        {
+                            //Check Subscription
+                            Console.WriteLine($"Your subscription is {_currentUser.Role}");
+                            Console.ReadLine();
+                        }
+                        else if (accountChoice == 3) 
+                        {
+                            //Change Password 
+                            Console.WriteLine("Enter Old Password:");
+                            string oldPassword = Console.ReadLine();
+                            Console.WriteLine("Enter New Password:");
+                            string newPassword = Console.ReadLine();
+
+                            switch (_currentUser.Role)
+                            {
+                                case UserRole.Standard:
+                                    _standardUserService.ChangePassword(_currentUser.Id, oldPassword, newPassword);
+                                    break;
+                                case UserRole.Premium:
+                                    _premiumUserService.ChangePassword(_currentUser.Id, oldPassword, newPassword);
+                                    break;
+                                case UserRole.Trainer:
+                                    _trainerUserService.ChangePassword(_currentUser.Id, oldPassword, newPassword);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
                         break;
                     case "Log Out":
                         _currentUser = null;
