@@ -1,0 +1,4 @@
+Hi we are testing custom writer
+Test again
+Hi test test
+test again

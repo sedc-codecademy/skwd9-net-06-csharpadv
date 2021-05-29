@@ -7,6 +7,7 @@ using SEDC.TryBeingFit.Services.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace SEDC.TryBeingFit.App
 {
@@ -151,9 +152,34 @@ namespace SEDC.TryBeingFit.App
                         break;
                     case "Upgrade to premium":
 
-                        //
+                        //suggestion for implementing real UpgradeToPremium functionality
 
-                        _uiService.UpgradeToPremium();
+                        // logout 
+                        // keep the currently logged user in a variable
+                        // find and delete that user from standardUserService
+                        // regsiter new premium user in the premiumUserService with the same data
+                        // log in the newly registered user
+
+                        Console.Clear();
+                        Console.WriteLine("Do you really want to upgrade to premium? It will cost you 15$.");
+                        Console.WriteLine("Press enter to upgrade!");
+
+                        Console.ReadLine();
+
+                        User tempCurrentUser = _currentUser;
+                        _currentUser = null;
+                        _standardUserService.DeleteById(tempCurrentUser.Id);
+                        PremiumUser newUser = _premiumUserService.MapToPremiumUser(tempCurrentUser);
+                        User user = _premiumUserService.Register(newUser);
+                        _currentUser = user;
+
+                        Console.WriteLine("Createing new premium sibscription, please wait ....");
+                        Thread.Sleep(2000);
+
+                        Console.WriteLine($"You have succesfully buy a premium subscription. Welcome back {_currentUser.Username}.");
+                        Thread.Sleep(2000);
+
+                        Console.ReadLine();
                         break;
                     case "Reschedule training":
                         List<LiveTraining> trainings = _liveTrainingService.GetTrainings().Where(training => training.Trainer.Id == _currentUser.Id).ToList();
