@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class12.Asyn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class12.Tasks", "SEDC.CSharpAdv.Class12.Tasks\SEDC.CSharpAdv.Class12.Tasks.csproj", "{15452EE7-A4BC-42AF-B9EB-71C80512B71E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class12.AsyncAwait", "SEDC.CSharpAdv.Class12.AsyncAwait\SEDC.CSharpAdv.Class12.AsyncAwait.csproj", "{DC2148C2-9CC7-4CA1-8F7E-CE2E5BECD58B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{15452EE7-A4BC-42AF-B9EB-71C80512B71E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15452EE7-A4BC-42AF-B9EB-71C80512B71E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15452EE7-A4BC-42AF-B9EB-71C80512B71E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC2148C2-9CC7-4CA1-8F7E-CE2E5BECD58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC2148C2-9CC7-4CA1-8F7E-CE2E5BECD58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC2148C2-9CC7-4CA1-8F7E-CE2E5BECD58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC2148C2-9CC7-4CA1-8F7E-CE2E5BECD58B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
