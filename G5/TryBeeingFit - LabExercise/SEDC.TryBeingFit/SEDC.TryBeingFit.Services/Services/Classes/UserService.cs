@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SEDC.TryBeingFit.Domain.Core.Entities.User;
+using SEDC.TryBeingFit.Domain.Core.Enum;
 using SEDC.TryBeingFit.Domain.Db.Classes;
 using SEDC.TryBeingFit.Domain.Db.Interfaces;
 using SEDC.TryBeingFit.Services.Helpers;
@@ -97,6 +98,23 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
         public T GetById(int id)
         {
             return Database.GetById(id);
+        }
+
+        public void DeleteById(int id) 
+        {
+            Database.RemoveById(id);
+        }
+
+        public PremiumUser MapToPremiumUser(User user)
+        {
+            return new PremiumUser()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Username = user.Username,
+                Password = user.Password,
+                Role = UserRole.Premium,
+            };
         }
 
         public bool IsDbEmpty()
