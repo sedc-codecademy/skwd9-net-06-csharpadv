@@ -14,12 +14,11 @@ namespace SerializingAndDeserializing.Services
             json += $"\"FirstName\" : \"{student.FirstName}\",";
             json += $"\"LastName\" : \"{student.LastName}\",";
             json += $"\"Age\" : \"{student.Age}\",";
-            json += $"\"IsPartTime\" : \"{student.IsPartTime.ToString().ToLower()}\",";
+            json += $"\"IsPartTime\" : \"{student.IsPartTime.ToString().ToLower()}\"";
             json += "}";
 
             return json;
         }
-
 
         // Deserialize a Student object
         public Student DeserializeStudent(string json)
