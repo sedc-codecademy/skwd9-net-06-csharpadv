@@ -26,9 +26,18 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Services
         {
             List<Movie> movies = new List<Movie>();
             bool isFinished = false;
+            string errorMessage = string.Empty;
             while (!isFinished)
             {
                 Screen.ClearScreen();
+                if (!string.IsNullOrWhiteSpace(errorMessage))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(errorMessage);
+                    Console.ResetColor();
+                    errorMessage = string.Empty;
+                }
+
                 if (movies.Count != 0)
                 {
                     movies.PrintMovies();
@@ -77,6 +86,7 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Services
                         catch (Exception ex)
                         {
                             // TODO: Find a way to show error message.
+                            errorMessage = ex.Message;
                         }
                         break;
                     case 0:

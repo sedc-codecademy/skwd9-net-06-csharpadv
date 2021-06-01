@@ -56,6 +56,14 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Menus
             Console.WriteLine("0. Go back");
         }
 
+        public static void RentedMenu()
+        {
+            Console.WriteLine("Use the numbers in front of the selection to navigate thru the applicaton.");
+            Console.WriteLine("1. View all videos");
+            Console.WriteLine("2. Return video");
+            Console.WriteLine("0. Go back");
+        }
+
         public static void ClearScreen()
         {
             Console.Clear();

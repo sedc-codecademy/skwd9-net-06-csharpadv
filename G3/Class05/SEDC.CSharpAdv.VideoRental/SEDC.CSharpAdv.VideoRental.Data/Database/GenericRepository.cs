@@ -52,9 +52,10 @@ namespace SEDC.CSharpAdv.VideoRental.Data.Database
             var dbEntity = data.FirstOrDefault(x => x.Id == entity.Id);
             if(dbEntity != null)
             {
-                dbEntity = entity;
+                data.Remove(dbEntity);
+                data.Add(entity);
             }
-            _db.Write(data);
+            _db.Write(data.OrderBy(x => x.Id).ToList());
             // TODO: Throw error if entity does not exists
         }
 

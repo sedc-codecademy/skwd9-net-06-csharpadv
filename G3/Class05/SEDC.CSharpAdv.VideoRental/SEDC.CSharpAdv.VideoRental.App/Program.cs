@@ -58,7 +58,7 @@ namespace SEDC.CSharpAdv.VideoRental.App
                         movieService.ViewMovieList(user);
                         break;
                     case 2:
-                        //TODO:
+                        userService.ViewRentedMovies(user);
                         break;
                     case 3:
                         //TODO:
