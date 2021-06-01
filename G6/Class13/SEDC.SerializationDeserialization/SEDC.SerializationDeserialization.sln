@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.SerializationDeserialization", "SEDC.SerializationDeserialization\SEDC.SerializationDeserialization.csproj", "{9FA914FD-A037-4BA3-98E7-90712249E2E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.SerializeServices", "SEDC.SerializeServices\SEDC.SerializeServices.csproj", "{297E4D29-439C-403C-9233-2597EA62507A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.NewtonsoftSerialization", "SEDC.NewtonsoftSerialization\SEDC.NewtonsoftSerialization.csproj", "{07F0EB8C-659E-45BA-AFF8-20DDD7D5B68C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.HttpResponseSerialize", "SEDC.HttpResponseSerialize\SEDC.HttpResponseSerialize.csproj", "{F9B42316-5ED0-4D7A-BA61-22A56A1A4B01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FA914FD-A037-4BA3-98E7-90712249E2E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FA914FD-A037-4BA3-98E7-90712249E2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FA914FD-A037-4BA3-98E7-90712249E2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FA914FD-A037-4BA3-98E7-90712249E2E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297E4D29-439C-403C-9233-2597EA62507A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297E4D29-439C-403C-9233-2597EA62507A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297E4D29-439C-403C-9233-2597EA62507A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297E4D29-439C-403C-9233-2597EA62507A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F0EB8C-659E-45BA-AFF8-20DDD7D5B68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F0EB8C-659E-45BA-AFF8-20DDD7D5B68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F0EB8C-659E-45BA-AFF8-20DDD7D5B68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F0EB8C-659E-45BA-AFF8-20DDD7D5B68C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9B42316-5ED0-4D7A-BA61-22A56A1A4B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9B42316-5ED0-4D7A-BA61-22A56A1A4B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9B42316-5ED0-4D7A-BA61-22A56A1A4B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9B42316-5ED0-4D7A-BA61-22A56A1A4B01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9313EA8-70B9-4187-91EA-9A52C1D5BADE}
+	EndGlobalSection
+EndGlobal
