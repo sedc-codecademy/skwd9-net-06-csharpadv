@@ -9,18 +9,29 @@ namespace SEDC.CSharpAdv.VideoRental.Data.Database
     public class UserRepository : GenericRepository<User>
     {
         public UserRepository()
-            : base(InMemoryDatabase.Users, InMemoryDatabase.userId)
         {
+            Seed();
+        }
+
+        private void Seed()
+        {
+            if(!_db.Read().Any())
+            {
+                _db.Seed(new List<User>
+                {
+                    new User() { Id = 1, CardNumber = 123, FullName = "Smiley Face" }
+                });
+            }
         }
 
         public User GetUserByIdCard(int idCard)
         {
-            return InMemoryDatabase.Users.FirstOrDefault(u => u.CardNumber == idCard);
+            return _db.Read().FirstOrDefault(u => u.CardNumber == idCard);
         } 
 
         public List<int> GetAllCardNumbers()
         {
-            return InMemoryDatabase.Users.Select(u => u.CardNumber).ToList();
+            return _db.Read().Select(u => u.CardNumber).ToList();
         }
     }
 }
