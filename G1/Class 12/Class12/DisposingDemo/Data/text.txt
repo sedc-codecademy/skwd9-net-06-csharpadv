@@ -1,0 +1,4 @@
+29.05.2021 11:25:24 [ERR] Error happened
+29.05.2021 11:25:27 [ERR] Error 2 happened
+29.05.2021 11:26:21 [ERR] Information happened
+29.05.2021 11:26:22 [ERR] Error 7 happened
