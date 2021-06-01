@@ -3,8 +3,10 @@ using SEDC.CSharpAdv.VideoRental.Data.Enumerations;
 using SEDC.CSharpAdv.VideoRental.Data.Models;
 using SEDC.CSharpAdv.VideoRental.Services.Helpers;
 using SEDC.CSharpAdv.VideoRental.Services.Interfaces;
+using SEDC.CSharpAdv.VideoRental.Services.Menus;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -13,10 +15,12 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Services
     public class UserService : IUserService
     {
         private UserRepository _userRepository;
+        private MovieRepository _movieRepository;
 
         public UserService()
         {
             _userRepository = new UserRepository();
+            _movieRepository = new MovieRepository();
         }
 
         public User Login()
@@ -67,6 +71,67 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Services
                 };
                 _userRepository.Insert(user);
                 return user;
+            }
+        }
+
+        public void ViewRentedMovies(User user)
+        {
+            bool isActive = false;
+            while(!isActive)
+            {
+                Screen.ClearScreen();
+                user.ViewRentedMovies();
+                Screen.RentedMenu();
+                int selection = InputParser.ToInteger(0, 2);
+                switch (selection)
+                {
+                    case 1:
+                        user.ViewRentedMovies();
+                        break;
+                    case 2:
+                        ReturnMovie(user);
+                        break;
+                    case 0:
+                        isActive = !isActive;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void ReturnMovie(User user)
+        {
+            if(user.RentedMovies.Count == 0)
+            {
+                Console.WriteLine("You dont have any movies rented");
+                return;
+            }
+
+            Console.WriteLine("Enter movie id in order to return a movie");
+            var movieId = InputParser.ToInteger(1, int.MaxValue);
+
+            var rental = user.RentedMovies.FirstOrDefault(x => x.Movie.Id == movieId);
+            if(rental != null)
+            {
+                rental.DateReturned = DateTime.Now;
+                var movie = _movieRepository.GetById(movieId);
+                if(movie.Quantity == 0)
+                {
+                    movie.IsAvailable = !movie.IsAvailable;
+                }
+                movie.Quantity += 1;
+
+                user.RentalHistory.Add(rental);
+                user.RentedMovies.Remove(rental);
+
+                _userRepository.Update(user);
+                _movieRepository.Update(movie);
+            }
+            else
+            {
+                Console.WriteLine("You do not have that movie rented. Please enter valid movie id");
+                return;
             }
         }
 

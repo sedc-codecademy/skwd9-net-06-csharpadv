@@ -9,13 +9,11 @@ namespace SEDC.CSharpAdv.VideoRental.Data.Database
     public abstract class GenericRepository<T>
         where T : BaseEntity
     {
-        protected List<T> Db { get; set; }
-        private int LastId { get; set; }
+        protected readonly IFileDatabase<T> _db;
 
-        public GenericRepository(List<T> db, int lastId)
+        public GenericRepository()
         {
-            Db = db;
-            LastId = lastId;
+            _db = new FileDatabase<T>();
         }
 
         // CRUD -> Create Read Update Delete
@@ -23,46 +21,58 @@ namespace SEDC.CSharpAdv.VideoRental.Data.Database
         // read
         public List<T> GetAll()
         {
-            return Db;
+            return _db.Read();
         }
 
         //read
         public T GetById(int id)
         {
-            return Db.FirstOrDefault(x => x.Id == id);
+            return _db.Read().FirstOrDefault(x => x.Id == id);
         }
 
         //create
         public int Insert(T entity)
         {
-            entity.Id = ++LastId;
-            Db.Add(entity);
-            return entity.Id;
+
+            entity.Id = ++_db.Id;
+            var data = _db.Read();
+            data.Add(entity);
+            bool isAdded = _db.Write(data);
+            if(isAdded)
+            {
+                return entity.Id;
+            }
+            return 0;
         }
 
         //update
         public void Update(T entity)
         {
-            var dbEntity = Db.FirstOrDefault(x => x.Id == entity.Id);
+            var data = _db.Read();
+            var dbEntity = data.FirstOrDefault(x => x.Id == entity.Id);
             if(dbEntity != null)
             {
-                dbEntity = entity;
+                data.Remove(dbEntity);
+                data.Add(entity);
             }
+            _db.Write(data.OrderBy(x => x.Id).ToList());
             // TODO: Throw error if entity does not exists
         }
 
         //delete
         public bool Remove(T entity)
         {
-            var prevLength = Db.Count;
-            Db.Remove(entity);
-            return prevLength != Db.Count;
+            var data = _db.Read();
+            var prevLength = data.Count;
+            data.Remove(entity);
+            _db.Write(data);
+            return prevLength != data.Count;
         }
 
         // filtering functions
         public List<T> Filter(Func<T,bool> filter)
         {
-            return Db.Where(filter).ToList();
+            return _db.Read().Where(filter).ToList();
         }
     }
 }

@@ -6,5 +6,6 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Interfaces
     {
         User Login();
         User SignUp();
+        void ViewRentedMovies(User user);
     }
 }

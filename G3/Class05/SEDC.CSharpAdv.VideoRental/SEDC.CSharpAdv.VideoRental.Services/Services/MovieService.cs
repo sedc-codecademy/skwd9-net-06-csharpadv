@@ -14,19 +14,30 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Services
     public class MovieService : IMovieService
     {
         private MovieRepository _movieRepository;
+        private UserRepository _userRepository;
 
         public MovieService()
         {
             _movieRepository = new MovieRepository();
+            _userRepository = new UserRepository();
         }
 
         public void ViewMovieList(User user)
         {
             List<Movie> movies = new List<Movie>();
             bool isFinished = false;
+            string errorMessage = string.Empty;
             while (!isFinished)
             {
                 Screen.ClearScreen();
+                if (!string.IsNullOrWhiteSpace(errorMessage))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(errorMessage);
+                    Console.ResetColor();
+                    errorMessage = string.Empty;
+                }
+
                 if (movies.Count != 0)
                 {
                     movies.PrintMovies();
@@ -67,12 +78,68 @@ namespace SEDC.CSharpAdv.VideoRental.Services.Services
                         movies = _movieRepository.Filter(x => x.Title.ToLower().Contains(trimedTitlePart));
                         break;
                     case 9:
-                        //TODO:
+                        //TODO: Rent a movie
+                        try
+                        {
+                            RentMovie(user);
+                        }
+                        catch (Exception ex)
+                        {
+                            // TODO: Find a way to show error message.
+                            errorMessage = ex.Message;
+                        }
                         break;
                     case 0:
                         isFinished = !isFinished;
                         break;
                 }
+            }
+        }
+
+        private void RentMovie(User user)
+        {
+            Console.Write("Enter movie id: ");
+            var idSelected = InputParser.ToInteger(
+                    _movieRepository.GetAll().Min(x => x.Id),
+                    _movieRepository.GetAll().Max(x => x.Id)
+                );
+
+            var movie = _movieRepository.GetById(idSelected);
+            if(movie != null)
+            {
+                var listOfRentedMovies = user.RentedMovies.Select(rental => rental.Movie.Id).ToList();
+                if (listOfRentedMovies.Contains(idSelected))
+                {
+                    throw new Exception($"Already rented {movie.Title}. Please return it first");
+                }
+
+                if (!movie.IsAvailable)
+                {
+                    throw new Exception($"Movie {movie.Title} is not available at the moment");
+                }
+
+                Console.WriteLine($"Are you sure you want to rent {movie.Title}? y/n");
+                bool confirm = InputParser.ToConfirm();
+                if (!confirm)
+                {
+                    return;
+                }
+
+                Console.WriteLine("Renting movie. Please wait...");
+                movie.Quantity--;
+                if(movie.Quantity == 0)
+                {
+                    movie.IsAvailable = !movie.IsAvailable;
+                }
+
+                user.RentedMovies.Add(new RentalInfo(movie));
+
+                _movieRepository.Update(movie);
+                _userRepository.Update(user);
+            }
+            else
+            {
+                throw new Exception($"No movie was found with {idSelected} id");
             }
         }
     }
