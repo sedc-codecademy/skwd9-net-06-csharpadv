@@ -52,7 +52,11 @@ namespace SEDC.CSharpAdv.VideoRental.Data.Database
                 File.Create(_dbFilePath).Close();
             }
 
-            Write(new List<T>());
+            var data = Read();
+            if (data == null)
+            {
+                Write(new List<T>());
+            }
 
             InitializeLastId();
         }
