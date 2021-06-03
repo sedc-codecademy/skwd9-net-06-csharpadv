@@ -1,8 +1,10 @@
-﻿using SEDC.TryBeingFit.Domain.Core.Entities;
+﻿using Newtonsoft.Json;
+using SEDC.TryBeingFit.Domain.Core.Entities;
 using SEDC.TryBeingFit.Domain.Db.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace SEDC.TryBeingFit.Domain.Db.Classes
@@ -19,7 +21,7 @@ namespace SEDC.TryBeingFit.Domain.Db.Classes
             _dbPath = @$"{_dbFolder}\{typeof(T).Name}s.json";
             _idPath = $@"{_dbFolder}\id.txt";
 
-            if (!Directory.Exists(_dbFolder)) 
+            if (!Directory.Exists(_dbFolder))
             {
                 Directory.CreateDirectory(_dbFolder);
             }
@@ -33,32 +35,108 @@ namespace SEDC.TryBeingFit.Domain.Db.Classes
             {
                 File.Create(_idPath).Close();
             }
-
         }
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            using (StreamReader sr = new StreamReader(_dbPath))
+            {
+                return JsonConvert.DeserializeObject<List<T>>(sr.ReadToEnd());
+            }
         }
 
         public T GetById(int id)
         {
-            throw new NotImplementedException();
+            using (StreamReader sr = new StreamReader(_dbPath))
+            {
+                return JsonConvert.DeserializeObject<List<T>>(sr.ReadToEnd()).SingleOrDefault(x => x.Id == id);
+            }
         }
 
         public int Insert(T entity)
         {
-            throw new NotImplementedException();
+            List<T> data = new List<T>();
+
+            using (StreamReader sr = new StreamReader(_dbPath))
+            {
+                data = JsonConvert.DeserializeObject<List<T>>(sr.ReadToEnd());
+            }
+
+            if (data == null)
+            {
+                data = new List<T>();
+            }
+
+            entity.Id = GenerateId();
+            data.Add(entity);
+
+            WriteData(_dbPath, data);
+            return entity.Id;
         }
 
         public void RemoveById(int id)
         {
-            throw new NotImplementedException();
+            List<T> data = new List<T>();
+
+            using (StreamReader sr = new StreamReader(_dbPath))
+            {
+                data = JsonConvert.DeserializeObject<List<T>>(sr.ReadToEnd());
+            }
+
+            T item = data.SingleOrDefault(x => x.Id == id);
+
+            if (item != null)
+            {
+                data.Remove(item);
+                WriteData(_dbPath, data);
+            }
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            List<T> data = new List<T>();
+
+            using (StreamReader sr = new StreamReader(_dbPath))
+            {
+                data = JsonConvert.DeserializeObject<List<T>>(sr.ReadToEnd());
+            }
+
+            T item = data.SingleOrDefault(x => x.Id == entity.Id);
+
+            if (item != null)
+            {
+                data[data.IndexOf(item)] = entity;
+                WriteData(_dbPath, data);
+            }
+        }
+
+        private void WriteData(string path, List<T> data)
+        {
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                sw.WriteLine(JsonConvert.SerializeObject(data));
+            }
+        }
+
+        private int GenerateId()
+        {
+            int id = 1;
+
+            using (StreamReader sr = new StreamReader(_idPath))
+            {
+                string currentId = sr.ReadLine();
+                if (currentId != null)
+                {
+                    id = int.Parse(currentId);
+                }
+            }
+
+            using (StreamWriter sw = new StreamWriter(_idPath))
+            {
+                sw.WriteLine(id + 1);
+            }
+
+            return id;
         }
     }
 }
