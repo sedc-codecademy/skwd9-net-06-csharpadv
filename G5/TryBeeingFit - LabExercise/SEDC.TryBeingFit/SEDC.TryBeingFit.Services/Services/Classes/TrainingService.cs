@@ -14,7 +14,8 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
 
         public TrainingService()
         {
-            Database = new LocalDb<T>();
+            //Database = new LocalDb<T>();
+            Database = new FileSystemDb<T>();
         }
 
         public List<T> GetTrainings()
@@ -37,6 +38,10 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
             return Database.GetAll()[index];
         }
 
+        public bool IsDbEmpty() 
+        {
+            return Database.GetAll() == null;
+        }
 
     }
 }

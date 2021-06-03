@@ -11,5 +11,7 @@ namespace SEDC.TryBeingFit.Services.Services.Interfaces
         T GetSingleTraining(int id);
         void AddTraining(T training);
         T GetTrainingByIndex(int index);
+
+        bool IsDbEmpty();
     }
 }
