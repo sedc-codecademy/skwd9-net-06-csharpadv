@@ -32,5 +32,12 @@ namespace SEDC.CSharpAdv.Class14.GettersSetters
             }
             return filteredList;
         }
+
+        public static void SomeMethod()
+        {
+            var list = new List<string>();
+            // use of our where method
+            list = list.Where(x => x.StartsWith("a")).ToList();
+        }
     }
 }
