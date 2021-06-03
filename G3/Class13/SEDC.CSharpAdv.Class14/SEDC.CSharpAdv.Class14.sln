@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class14.Gett
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class14.SB", "SEDC.CSharpAdv.Class14.StringBuilder\SEDC.CSharpAdv.Class14.SB.csproj", "{331FF106-DA08-4A1B-99BE-0575935E542B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.CSharpAdv.Class14.MixedGoods", "SEDC.CSharpAdv.Class14.MixedGoods\SEDC.CSharpAdv.Class14.MixedGoods.csproj", "{6DD8740B-4716-4E09-BB2D-58945C54D73D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{331FF106-DA08-4A1B-99BE-0575935E542B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{331FF106-DA08-4A1B-99BE-0575935E542B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{331FF106-DA08-4A1B-99BE-0575935E542B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DD8740B-4716-4E09-BB2D-58945C54D73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD8740B-4716-4E09-BB2D-58945C54D73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD8740B-4716-4E09-BB2D-58945C54D73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD8740B-4716-4E09-BB2D-58945C54D73D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

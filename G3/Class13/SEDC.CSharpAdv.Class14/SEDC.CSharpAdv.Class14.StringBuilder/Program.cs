@@ -9,6 +9,10 @@ namespace SEDC.CSharpAdv.Class14.SB
     {
         static void Main(string[] args)
         {
+            //Console.WriteLine("GoodBad");
+            //Console.WriteLine(nameof(GoodBad));
+
+
             // MailExample();
 
 
