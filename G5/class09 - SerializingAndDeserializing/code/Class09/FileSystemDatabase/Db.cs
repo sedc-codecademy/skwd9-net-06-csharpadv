@@ -18,7 +18,7 @@ namespace FileSystemDatabase
         public Db()
         {
             _dbDirectory = @"..\..\..\Databases";
-            _dbFile = $@"{_dbDirectory}\{typeof(T)}s.json";
+            _dbFile = $@"{_dbDirectory}\{typeof(T).Name}s.json";
 
             if (!Directory.Exists(_dbDirectory))
             {
