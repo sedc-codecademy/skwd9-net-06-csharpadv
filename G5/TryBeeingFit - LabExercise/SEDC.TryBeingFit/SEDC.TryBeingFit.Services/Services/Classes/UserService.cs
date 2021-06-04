@@ -17,7 +17,8 @@ namespace SEDC.TryBeingFit.Services.Services.Classes
 
         public UserService()
         {
-            Database = new LocalDb<T>();
+            //Database = new LocalDb<T>();
+            Database = new FileSystemDb<T>();
         }
 
         public T Login(string username, string password)
