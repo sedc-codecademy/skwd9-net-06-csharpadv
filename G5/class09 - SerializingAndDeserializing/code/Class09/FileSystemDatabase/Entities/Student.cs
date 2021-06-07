@@ -10,6 +10,8 @@ namespace FileSystemDatabase.Entities
 		public string LastName { get; set; }
 		public int Age { get; set; }
 
+        public Student(){}
+
 		public Student(string first, string last, int age)
 		{
 			FirstName = first;

@@ -1,0 +1,6 @@
+﻿Hello {customer},
+
+Welcome {username} to our site, we are thriled that you have subscribed to get our newsleter.
+
+Best regards,
+{clientname}
