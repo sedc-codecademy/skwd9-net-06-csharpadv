@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disposing", "Disposing\Disposing.csproj", "{A6EB7D44-B268-4667-97FD-B3A43D6DDD9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nullable", "Nullable\Nullable.csproj", "{EA526735-6612-4D13-9A22-61C68927D59E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6EB7D44-B268-4667-97FD-B3A43D6DDD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6EB7D44-B268-4667-97FD-B3A43D6DDD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6EB7D44-B268-4667-97FD-B3A43D6DDD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6EB7D44-B268-4667-97FD-B3A43D6DDD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA526735-6612-4D13-9A22-61C68927D59E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA526735-6612-4D13-9A22-61C68927D59E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA526735-6612-4D13-9A22-61C68927D59E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA526735-6612-4D13-9A22-61C68927D59E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {612A8CED-61A5-4830-B998-3B39CFB78A2F}
+	EndGlobalSection
+EndGlobal
