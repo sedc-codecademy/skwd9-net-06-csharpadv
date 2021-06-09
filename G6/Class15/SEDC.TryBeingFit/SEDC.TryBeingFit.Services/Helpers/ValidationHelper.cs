@@ -31,6 +31,18 @@ namespace SEDC.TryBeingFit.Services.Helpers
 
             //if (!isNum) return null;
             //return password;
-        }    
+        }
+
+        public static int ValidateNumber(string number, int range)
+        {
+            bool isNumber = int.TryParse(number, out int num);
+            if (!isNumber) 
+                return -1;
+
+            if (num <= 0 || num > range) 
+                return -1;
+
+            return num;
+        }
     }
 }

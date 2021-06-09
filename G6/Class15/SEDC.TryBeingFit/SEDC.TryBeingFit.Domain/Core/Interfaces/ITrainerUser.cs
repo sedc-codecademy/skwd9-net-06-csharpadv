@@ -7,6 +7,6 @@ namespace SEDC.TryBeingFit.Domain.Core.Interfaces
 {
     public interface ITrainerUser
     {
-        bool ChangeSchedule(ILiveTraining training);
+        bool ChangeSchedule(LiveTraining training, int days);
     }
 }

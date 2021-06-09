@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SEDC.TryBeingFit.Domain.Core.Models
 {
-    public class User : BaseEntity, IUser
+    public abstract class User : BaseEntity, IUser
     {
         public string FirstName { get; set ; }
         public string LastName { get; set; }

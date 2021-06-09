@@ -11,6 +11,12 @@ namespace SEDC.TryBeingFit.Domain.Db
         public int IdCount { get; set; }
         private List<T> _table;
 
+        public LocalDb()
+        {
+            _table = new List<T>();
+            IdCount = 1;
+        }
+
         public List<T> GetAll()
         {
             return _table;

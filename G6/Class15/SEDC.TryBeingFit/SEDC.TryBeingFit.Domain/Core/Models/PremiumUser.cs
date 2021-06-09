@@ -7,7 +7,6 @@ namespace SEDC.TryBeingFit.Domain.Core.Models
 {
     public class PremiumUser : User
     {
-        // TODO: Chagne the string type into the appropriate video type later
         public List<VideoTraining> VideoTrainings { get; set; }
         public LiveTraining LiveTraining { get; set; }
 

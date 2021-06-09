@@ -9,7 +9,7 @@ namespace SEDC.TryBeingFit.Services.Services
     {
         T Register(T user);
         T LogIn(string username, string password);
-        T GetById(int id);
+        T GetUserById(int id);
         void ChangePassword(int userId, string oldPassword, string newPassword);
         void ChangeInfo(int userId, string firstName, string lastName);
     }
