@@ -148,7 +148,54 @@ namespace SEDC.TryBeingFit.App
 
 
                     case "Account":
-
+                        int accountChoice = _uiService.AccountMenu(_currentUser.Role);
+                        Console.Clear();
+                        if (accountChoice == 1)
+                        {
+                            // Change Info
+                            Console.WriteLine("Enter new First Name:");
+                            string firstName = Console.ReadLine();
+                            Console.WriteLine("Enter new Last Name:");
+                            string lastName = Console.ReadLine();
+                            switch (_currentUser.Role)
+                            {
+                                case UserRole.Standard:
+                                    _standardUserService.ChangeInfo(_currentUser.Id, firstName, lastName);
+                                    break;
+                                case UserRole.Premium:
+                                    _premiumUserService.ChangePassword(_currentUser.Id, firstName, lastName);
+                                    break;
+                                case UserRole.Trainer:
+                                    _trainerUserService.ChangePassword(_currentUser.Id, firstName, lastName);
+                                    break;
+                            }
+                        }
+                        else if (accountChoice == 2)
+                        {
+                            // Check Subscription
+                            Console.WriteLine($"Your subscription is: {_currentUser.Role}");
+                            Console.ReadLine();
+                        }
+                        else if (accountChoice == 3)
+                        {
+                            // Change info
+                            Console.WriteLine("Enter old password:");
+                            string oldPass = Console.ReadLine();
+                            Console.WriteLine("Enter new password:");
+                            string newPass = Console.ReadLine();
+                            switch (_currentUser.Role)
+                            {
+                                case UserRole.Standard:
+                                    _standardUserService.ChangePassword(_currentUser.Id, oldPass, newPass);
+                                    break;
+                                case UserRole.Premium:
+                                    _premiumUserService.ChangePassword(_currentUser.Id, oldPass, newPass);
+                                    break;
+                                case UserRole.Trainer:
+                                    _trainerUserService.ChangePassword(_currentUser.Id, oldPass, newPass);
+                                    break;
+                            }
+                        }
                         break;
 
                     case "Log out":
